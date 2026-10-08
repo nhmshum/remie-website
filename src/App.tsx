@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react';
+import { useMemo, useState, type ReactElement } from 'react';
 import { Bell, BookOpen, Bookmark, Camera, ChevronLeft, ChevronRight, CircleUserRound, Heart, Home, MessageCircle, Mic, MoreHorizontal, Paperclip, Plus, Search, Send, Settings, Share2, Sparkles, Star, Users, Video, X } from 'lucide-react';
 
 type View = 'landing' | 'kitchen' | 'search' | 'diary' | 'saved' | 'cookbook' | 'me';
@@ -25,49 +25,69 @@ function Avatar({ person, size = 48 }: { person: Person | { name: string; avatar
 
 function Logo() { return <button className="logo" onClick={() => location.reload()}><span className="logo-mark">♨</span><span>remie</span></button>; }
 
-function Landing({ enter }: { enter: () => void }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const worldRef = useRef<HTMLElement>(null);
-  const [active, setActive] = useState(0);
-  const scenes = [
-    { label:'Welcome home', eyebrow:'YOUR PEOPLE · YOUR RECIPES', title:'Good food.\nYour people.\nA little closer.', body:'A cozy place to cook, share, and keep up with the people you love.' },
-    { label:'The kitchen', eyebrow:'A PRIVATE PLACE TO GATHER', title:'Always a seat\nat the table.', body:'Your closest people, together in one warm little kitchen—wherever they are.' },
-    { label:'Family recipes', eyebrow:'KEEP WHAT MATTERS', title:'Recipes with\na story.', body:'Save the family favorites, every handwritten note, and the version that finally felt right.' },
-    { label:'Cook together', eyebrow:'LESS SCROLLING · MORE SUPPER', title:'Make the everyday\nfeel together.', body:'Share what’s cooking, call from the counter, and celebrate the small wins.' },
-    { label:'Come on in', eyebrow:'YOUR KITCHEN IS WAITING', title:'Pull up\na chair.', body:'Your people. Your recipes. Your little corner of home.', cta:true },
-  ];
-  useEffect(() => {
-    let raf = 0;
-    const update = () => {
-      const world = worldRef.current, video = videoRef.current;
-      if (!world || !video) return;
-      const max = world.offsetHeight - innerHeight;
-      const progress = Math.max(0, Math.min(1, -world.getBoundingClientRect().top / Math.max(1, max)));
-      const next = Math.min(scenes.length - 1, Math.floor(progress * scenes.length));
-      setActive(next);
-      if (video.duration && Number.isFinite(video.duration)) {
-        const target = progress * Math.max(0, video.duration - .05);
-        if (Math.abs(video.currentTime - target) > .025) video.currentTime = target;
-      }
-    };
-    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); };
-    addEventListener('scroll', onScroll, { passive:true }); addEventListener('resize', onScroll); update();
-    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
-  }, []);
-  return <main className="landing scroll-landing">
-    <header className="marketing-nav world-nav"><Logo /><nav><button className="world-sound" aria-label="Scroll to explore">Scroll to explore ↓</button><button className="button small" onClick={enter}>Enter Remie</button></nav></header>
-    <section className="scroll-world" ref={worldRef}>
-      <div className="world-stage">
-        <img className="world-poster" src="/assets/remie-main-kitchen.png" alt="The Remie kitchen world"/>
-        <video ref={videoRef} className="world-video" muted playsInline preload="auto" poster="/assets/remie-main-kitchen.png" aria-hidden="true"><source src="/assets/video/remie-scroll.mp4" type="video/mp4"/></video>
-        <div className="world-vignette"/>
-        <div className="world-copy" key={active}><p>{scenes[active].eyebrow}</p><h1>{scenes[active].title.split('\n').map((line,i)=><span key={i}>{line}</span>)}</h1><div className="world-body"><p>{scenes[active].body}</p>{scenes[active].cta&&<button onClick={enter}>Come into the kitchen <ChevronRight size={18}/></button>}</div></div>
-        <div className="world-route">{scenes.map((scene,i)=><button key={scene.label} className={i===active?'active':''} onClick={()=>scrollTo({top:(worldRef.current?.offsetTop||0)+(i/(scenes.length-1))*((worldRef.current?.offsetHeight||innerHeight)-innerHeight),behavior:'smooth'})}><i/><span>{scene.label}</span></button>)}</div>
-        <div className="world-progress"><i style={{width:`${((active+1)/scenes.length)*100}%`}}/></div>
+function Landing() {
+  const [phone,setPhone] = useState('');
+  const [waitlistNote,setWaitlistNote] = useState('');
+  const formUrl = import.meta.env.VITE_WAITLIST_FORM_URL as string | undefined;
+  const phoneField = (import.meta.env.VITE_WAITLIST_PHONE_ENTRY as string | undefined) || 'entry.0000000000';
+  const joinWaitlist = (event: React.FormEvent<HTMLFormElement>) => {
+    if (!/^\+?[\d\s().-]{7,20}$/.test(phone.trim())) {
+      event.preventDefault();
+      setWaitlistNote('Please enter a valid phone number.');
+      return;
+    }
+    if (!formUrl) {
+      event.preventDefault();
+      setWaitlistNote('The waitlist connection is being finished now.');
+      return;
+    }
+    setWaitlistNote('You’re on the list. Welcome to the kitchen.');
+    window.setTimeout(()=>setPhone(''),250);
+  };
+  return <main className="landing remie-home">
+    <header className="home-nav"><Logo/><nav><a href="#features">Features</a><a href="#how-it-works">How it works</a><a className="home-button home-button-small" href="#waitlist">Join the waitlist</a></nav></header>
+
+    <section className="home-hero">
+      <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
+      <div className="home-hero-shade"/>
+      <div className="home-hero-copy">
+        <p className="home-kicker">YOUR PRIVATE KITCHEN CIRCLE</p>
+        <h1>Food tastes better<br/>when it brings us home.</h1>
+        <p>Remie is the cozy place where your people share recipes, cook together, and keep the stories behind every dish.</p>
+        <div className="home-actions"><a className="home-button" href="#waitlist">Join the waitlist <ChevronRight size={18}/></a><a href="#features">See what’s inside</a></div>
       </div>
+      <div className="home-trust"><span><i/>Private by default</span><span>Made for your closest people</span></div>
     </section>
-    <section className="world-after"><p className="eyebrow">REMiE IS FOR REAL LIFE</p><h2>Less scrolling.<br/>More supper.</h2><div><span>🍲 Cook something good.</span><span>📜 Save the family favorites.</span><span>♥ Keep your people close.</span></div><button onClick={enter}>Explore the working demo <ChevronRight size={18}/></button></section>
-    <footer className="marketing-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#">Privacy</a><a href="#">Instagram</a></nav></footer>
+
+    <section className="home-intro">
+      <p className="home-kicker">MORE THAN A RECIPE APP</p>
+      <h2>A shared kitchen for the people you love.</h2>
+      <p>Not another feed to keep up with. Just a warm, useful place to know what everyone is cooking, save what matters, and make meals feel a little more connected.</p>
+    </section>
+
+    <section className="home-feature-grid" id="features">
+      <article className="feature-large feature-circle">
+        <div className="feature-copy"><span className="feature-number">01</span><p className="home-kicker">YOUR KITCHEN CIRCLE</p><h3>See who’s around the table.</h3><p>Set a kitchen mood, peek at what your people are making, and start a quiet call or cook-together session without the group-chat noise.</p><a href="#waitlist">Save me a seat <ChevronRight size={16}/></a></div>
+        <div className="circle-preview"><div className="circle-top"><span>Tonight in the kitchen</span><b>4 online</b></div><img src="/assets/classic-cozy.png" alt="A cozy Remie kitchen room"/><div className="circle-people">{people.slice(0,4).map(p=><div key={p.name}><Avatar person={p} size={48}/><span>{p.name}</span></div>)}</div></div>
+      </article>
+
+      <article className="feature-card feature-recipes"><span className="feature-number">02</span><BookOpen/><p className="home-kicker">RECIPES WITH A HISTORY</p><h3>Keep every recipe—and every version.</h3><p>Save the original, add the tweaks that worked, and remember who taught you. Your family cookbook gets richer every time you cook.</p><div className="recipe-slip"><small>MUM’S KITCHEN · VERSION 7</small><strong>Sunday tomato sauce</strong><span>“A little more garlic than the card says.”</span></div></article>
+
+      <article className="feature-card feature-personal"><span className="feature-number">03</span><Sparkles/><p className="home-kicker">PERSONAL, NOT GENERIC</p><h3>Recipes that know your table.</h3><p>Remie remembers your preferences, allergies, goals, and skill level—then explains every helpful substitution.</p><div className="preference-row"><span>Gluten-free</span><span>High protein</span><span>No tomato</span></div></article>
+
+      <article className="feature-wide feature-cook">
+        <div><span className="feature-number">04</span><p className="home-kicker">COOK TOGETHER</p><h3>Company, right from the counter.</h3><p>Turn any recipe into a shared cooking moment with video, clear steps, timers, voice notes, and hands-free guidance.</p><ul><li><Video size={18}/> Drop-in kitchen calls</li><li><Mic size={18}/> Voice-first cooking help</li><li><Camera size={18}/> Save the finished dish</li></ul></div>
+        <div className="cook-call"><div className="call-head"><span><i/> Cooking with Mum</span><small>18:42</small></div><img src="/assets/mum.png" alt="Mum in a Remie cooking call"/><div className="call-step"><small>STEP 3 OF 6</small><strong>Stir gently until glossy.</strong><div><i/><i/><i/></div></div></div>
+      </article>
+    </section>
+
+    <section className="home-steps" id="how-it-works">
+      <div className="steps-heading"><p className="home-kicker">SET THE TABLE IN MINUTES</p><h2>Simple enough for everyone.</h2></div>
+      <div className="steps-list"><article><span>1</span><h3>Invite your people</h3><p>Keep your circle small, private, and meaningful.</p></article><article><span>2</span><h3>Bring your recipes</h3><p>Type, paste, photograph, or speak them into Remie.</p></article><article><span>3</span><h3>Cook and remember</h3><p>Share the meal, save the story, improve it next time.</p></article></div>
+    </section>
+
+    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">THERE’S ALWAYS ROOM FOR ONE MORE</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your people into Remie.</p><form className="waitlist-form" action={formUrl} method="POST" target="waitlist-response" onSubmit={joinWaitlist}><label htmlFor="waitlist-phone">Phone number</label><div><input id="waitlist-phone" name={phoneField} type="tel" autoComplete="tel" inputMode="tel" placeholder="(555) 123-4567" value={phone} onChange={e=>{setPhone(e.target.value);setWaitlistNote('')}} required/><button className="home-button" type="submit">Join the waitlist <ChevronRight size={18}/></button></div><small aria-live="polite">{waitlistNote || 'Just your phone number. No spam, ever.'}</small></form><iframe title="Waitlist form response" name="waitlist-response" className="waitlist-frame"/></section>
+    <footer className="home-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#features">Features</a><a href="#">Privacy</a></nav></footer>
   </main>;
 }
 
@@ -107,7 +127,7 @@ function FriendModal({ person, close }: { person:Person; close:()=>void }) { con
 
 export default function App() {
   const [view,setView]=useState<View>('landing'); const [selected,setSelected]=useState<Recipe|null>(null); const [friend,setFriend]=useState<Person|null>(null); const [saved,setSaved]=useState<number[]>([1,2]);
-  if(view==='landing') return <Landing enter={()=>setView('kitchen')}/>;
+  if(view==='landing') return <Landing/>;
   const pages:Record<Exclude<View,'landing'>,ReactElement>={kitchen:<Kitchen openRecipe={setSelected} openFriend={setFriend} saved={saved} toggleSaved={id=>setSaved(s=>s.includes(id)?s.filter(x=>x!==id):[...s,id])}/>,search:<SearchPage openRecipe={setSelected}/>,diary:<Diary openRecipe={setSelected}/>,saved:<Saved saved={saved} openRecipe={setSelected}/>,cookbook:<Cookbook openRecipe={setSelected}/>,me:<Me openFriend={setFriend}/>};
   return <div className="app-shell"><Nav view={view} setView={setView}/><main className="app-main">{pages[view]}</main>{selected&&<RecipeModal recipe={selected} close={()=>setSelected(null)}/>} {friend&&<FriendModal person={friend} close={()=>setFriend(null)}/>}</div>;
 }
