@@ -45,3 +45,5 @@
 .home-table-section .table-story{min-height:0;display:block;padding:0;background:transparent;overflow:visible}
 .feature-recipes{min-height:540px}
 @media(max-width:620px){.feature-recipes{min-height:560px}}
+.table-gathering{position:relative;width:min(1150px,100%);margin:auto;overflow:hidden;border:1px solid rgba(76,57,39,.16);border-radius:34px;background:#ead9bd;box-shadow:0 28px 65px rgba(77,52,35,.18)}.table-gathering>img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}.table-gathering .table-count{bottom:22px;background:rgba(255,250,240,.92);backdrop-filter:blur(10px)}
+@media(max-width:620px){.table-gathering{border-radius:22px}.table-gathering>img{aspect-ratio:4/5;object-position:center center}.table-gathering .table-count{bottom:14px}}
