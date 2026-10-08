@@ -51,42 +51,42 @@ function Landing() {
       <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
       <div className="home-hero-shade"/>
       <div className="home-hero-copy">
-        <p className="home-kicker">YOUR PRIVATE KITCHEN CIRCLE</p>
-        <h1>Food tastes better<br/>when it brings us home.</h1>
-        <p>Remie is the cozy place where your people share recipes, cook together, and keep the stories behind every dish.</p>
+        <p className="home-kicker">YOUR CLOSEST PEOPLE. 16 MAX.</p>
+        <h1>A private kitchen<br/>for your people.</h1>
+        <p>Remie gives your closest friends and family one place to share what they cook, cook live together, and stay close from separate kitchens.</p>
         <div className="home-actions"><a className="home-button" href="#waitlist">Join the waitlist <ChevronRight size={18}/></a><a href="#features">See what’s inside</a></div>
       </div>
-      <div className="home-trust"><span><i/>Private by default</span><span>Made for your closest people</span></div>
+      <div className="home-trust"><span><i/>Private by design</span><span>Up to 16 close friends and family</span></div>
     </section>
 
     <section className="home-intro">
-      <p className="home-kicker">MORE THAN A RECIPE APP</p>
-      <h2>A shared kitchen for the people you love.</h2>
-      <p>Not another feed to keep up with. Just a warm, useful place to know what everyone is cooking, save what matters, and make meals feel a little more connected.</p>
+      <p className="home-kicker">CLOSE FRIENDS AND FAMILY ONLY</p>
+      <h2>One private place to cook and stay close.</h2>
+      <p>Keep the circle small. Remie is built for up to 16 people who actually know each other, cook for each other, and want to share more of everyday life.</p>
     </section>
 
     <section className="home-feature-grid" id="features">
       <article className="feature-large feature-circle">
-        <div className="feature-copy"><span className="feature-number">01</span><p className="home-kicker">YOUR KITCHEN CIRCLE</p><h3>See who’s around the table.</h3><p>Set a kitchen mood, peek at what your people are making, and start a quiet call or cook-together session without the group-chat noise.</p><a href="#waitlist">Save me a seat <ChevronRight size={16}/></a></div>
-        <div className="circle-preview"><div className="circle-top"><span>Tonight in the kitchen</span><b>4 online</b></div><img src="/assets/classic-cozy.png" alt="A cozy Remie kitchen room"/><div className="circle-people">{people.slice(0,4).map(p=><div key={p.name}><Avatar person={p} size={48}/><span>{p.name}</span></div>)}</div></div>
+        <div className="feature-copy"><span className="feature-number">01</span><h3>See what your people are cooking.</h3><p>Your feed only includes your circle. Share a finished dish, a recipe worth keeping, or a quick update from your kitchen.</p><a href="#waitlist">Save me a seat <ChevronRight size={16}/></a></div>
+        <div className="feed-preview"><div className="feed-top"><span>Cooking in your circle</span><b>5 new</b></div>{recipes.slice(0,2).map(recipe=><article key={recipe.id}><img src={recipe.image} alt={recipe.title}/><div><Avatar person={{name:recipe.person,avatar:recipe.avatar}} size={37}/><span><b>{recipe.person}</b><small>{recipe.title}</small></span><Heart size={17}/></div></article>)}</div>
       </article>
 
-      <article className="feature-card feature-recipes"><span className="feature-number">02</span><BookOpen/><p className="home-kicker">RECIPES WITH A HISTORY</p><h3>Keep every recipe—and every version.</h3><p>Save the original, add the tweaks that worked, and remember who taught you. Your family cookbook gets richer every time you cook.</p><div className="recipe-slip"><small>MUM’S KITCHEN · VERSION 7</small><strong>Sunday tomato sauce</strong><span>“A little more garlic than the card says.”</span></div></article>
+      <article className="feature-card feature-recipes"><span className="feature-number">02</span><BookOpen/><h3>Keep the recipes your family actually cooks.</h3><p>Save a recipe, add the changes that worked, and keep every version in one shared family cookbook.</p><div className="recipe-slip"><small>MUM’S KITCHEN · VERSION 7</small><strong>Sunday tomato sauce</strong><span>“A little more garlic than the card says.”</span></div></article>
 
-      <article className="feature-card feature-personal"><span className="feature-number">03</span><Sparkles/><p className="home-kicker">PERSONAL, NOT GENERIC</p><h3>Recipes that know your table.</h3><p>Remie remembers your preferences, allergies, goals, and skill level—then explains every helpful substitution.</p><div className="preference-row"><span>Gluten-free</span><span>High protein</span><span>No tomato</span></div></article>
+      <article className="feature-card feature-personal"><span className="feature-number">03</span><Sparkles/><h3>Remie learns how you eat.</h3><p>Over time, Remie learns your diet, allergies, preferences, goals, and cooking level. It uses what it knows to make every recipe work better for you.</p><div className="preference-row"><span>Gluten-free</span><span>High protein</span><span>No tomato</span></div></article>
 
       <article className="feature-wide feature-cook">
-        <div><span className="feature-number">04</span><p className="home-kicker">COOK TOGETHER</p><h3>Company, right from the counter.</h3><p>Turn any recipe into a shared cooking moment with video, clear steps, timers, voice notes, and hands-free guidance.</p><ul><li><Video size={18}/> Drop-in kitchen calls</li><li><Mic size={18}/> Voice-first cooking help</li><li><Camera size={18}/> Save the finished dish</li></ul></div>
-        <div className="cook-call"><div className="call-head"><span><i/> Cooking with Mum</span><small>18:42</small></div><img src="/assets/mum.png" alt="Mum in a Remie cooking call"/><div className="call-step"><small>STEP 3 OF 6</small><strong>Stir gently until glossy.</strong><div><i/><i/><i/></div></div></div>
+        <div><span className="feature-number">04</span><h3>Cook together from separate kitchens.</h3><p>Start a live video call with friends or family while everyone cooks at home. Remie also reads steps, runs timers, and answers questions so you can cook hands free.</p><ul><li><Video size={18}/> Cook live with your people</li><li><Mic size={18}/> Get hands-free recipe help</li><li><Camera size={18}/> Share what you made</li></ul></div>
+        <div className="cook-call"><div className="call-head"><span><i/> Cooking with Mum</span><small>18:42</small></div><img src="https://images.unsplash.com/photo-1758874960056-07aa3d0afa3b?auto=format&fit=crop&w=1200&q=85" alt="Mum cooking during a Remie video call"/><div className="call-step"><small>STEP 3 OF 6</small><strong>Stir gently until glossy.</strong><div><i/><i/><i/></div></div></div>
       </article>
     </section>
 
     <section className="home-steps" id="how-it-works">
       <div className="steps-heading"><p className="home-kicker">SET THE TABLE IN MINUTES</p><h2>Simple enough for everyone.</h2></div>
-      <div className="steps-list"><article><span>1</span><h3>Invite your people</h3><p>Keep your circle small, private, and meaningful.</p></article><article><span>2</span><h3>Bring your recipes</h3><p>Type, paste, photograph, or speak them into Remie.</p></article><article><span>3</span><h3>Cook and remember</h3><p>Share the meal, save the story, improve it next time.</p></article></div>
+      <div className="steps-list"><article><span>1</span><h3>Invite your inner circle</h3><p>Add up to 16 close friends and family. No followers and no strangers.</p></article><article><span>2</span><h3>Bring your recipes</h3><p>Type, paste, photograph, or speak them into Remie.</p></article><article><span>3</span><h3>Cook and share</h3><p>Cook hands free, go live together, and share the finished dish.</p></article></div>
     </section>
 
-    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">THERE’S ALWAYS ROOM FOR ONE MORE</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your people into Remie.</p><form className="waitlist-form" action={formUrl} method="POST" target="waitlist-response" onSubmit={joinWaitlist}><label htmlFor="waitlist-phone">Phone number</label><div><input id="waitlist-phone" name={phoneField} type="tel" autoComplete="tel" inputMode="tel" placeholder="(555) 123-4567" value={phone} onChange={e=>{setPhone(e.target.value);setWaitlistNote('')}} required/><button className="home-button" type="submit">Join the waitlist <ChevronRight size={18}/></button></div><small aria-live="polite">{waitlistNote || 'Just your phone number. No spam, ever.'}</small></form><iframe title="Waitlist form response" name="waitlist-response" className="waitlist-frame"/></section>
+    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">YOUR INNER CIRCLE. 16 PEOPLE MAX.</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your closest friends and family into Remie.</p><form className="waitlist-form" action={formUrl} method="POST" target="waitlist-response" onSubmit={joinWaitlist}><label htmlFor="waitlist-phone">Phone number</label><div><input id="waitlist-phone" name={phoneField} type="tel" autoComplete="tel" inputMode="tel" placeholder="(555) 123-4567" value={phone} onChange={e=>{setPhone(e.target.value);setWaitlistNote('')}} required/><button className="home-button" type="submit">Join the waitlist <ChevronRight size={18}/></button></div><small aria-live="polite">{waitlistNote || 'Just your phone number. No spam, ever.'}</small></form><iframe title="Waitlist form response" name="waitlist-response" className="waitlist-frame"/></section>
     <footer className="home-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#features">Features</a><a href="#">Privacy</a></nav></footer>
   </main>;
 }
