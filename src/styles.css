@@ -43,3 +43,5 @@
 @media(max-width:620px){.feed-preview{padding:10px;gap:8px}.feed-preview article>img{height:155px}.feed-preview article>div{padding:7px}.feed-preview .avatar{width:30px!important;height:30px!important}.feed-preview article svg{display:none}}
 .home-nav a.home-button{color:#fff}
 .home-table-section .table-story{min-height:0;display:block;padding:0;background:transparent;overflow:visible}
+.feature-recipes{min-height:540px}
+@media(max-width:620px){.feature-recipes{min-height:560px}}
