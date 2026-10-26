@@ -61,24 +61,29 @@ function Landing() {
     </section>
 
     <section className="home-intro">
-      <p className="home-kicker">CLOSE FRIENDS AND FAMILY ONLY</p>
-      <h2>One private place to cook and stay close.</h2>
-      <p>Keep the circle small. Remie is built for up to 16 people who actually know each other, cook for each other, and want to share more of everyday life.</p>
+      <p className="home-kicker">THE APP FOR YOUR INNER CIRCLE</p>
+      <h2>Your kitchens, connected.</h2>
+      <p>Step into one shared kitchen with the people you love. See who is around, swap what you are making, keep family recipes close, and cook together from anywhere.</p>
     </section>
 
     <section className="home-feature-grid" id="features">
-      <article className="feature-large feature-circle">
-        <div className="feature-copy"><span className="feature-number">01</span><h3>See what your people are cooking.</h3><p>Your feed only includes your circle. Share a finished dish, a recipe worth keeping, or a quick update from your kitchen.</p><a href="#waitlist">Save me a seat <ChevronRight size={16}/></a></div>
-        <div className="feed-preview"><div className="feed-top"><span>Cooking in your circle</span><b>5 new</b></div>{recipes.slice(0,2).map(recipe=><article key={recipe.id}><img src={recipe.image} alt={recipe.title}/><div><Avatar person={{name:recipe.person,avatar:recipe.avatar}} size={37}/><span><b>{recipe.person}</b><small>{recipe.title}</small></span><Heart size={17}/></div></article>)}</div>
+      <article className="feature-large feature-kitchen">
+        <div className="feature-copy"><span className="feature-number">01</span><p className="feature-label">YOUR KITCHEN</p><h3>Know who is around.</h3><p>Your people appear in the kitchen when they are cooking, free to call, or just hanging out. Drop in, start a video call, or make dinner side by side from separate homes.</p><a href="#waitlist">Join your kitchen <ChevronRight size={16}/></a></div>
+        <div className="app-kitchen-preview"><div className="app-preview-bar"><span>Nicky’s Kitchen</span><b>5 of 16 here</b></div><img src="/assets/app/kitchen-room.png" alt="The Remie app kitchen with friends gathered around the island"/><div className="app-kitchen-people">{people.slice(0,4).map((person,index)=><div className={`app-person app-person-${index}`} key={person.name}><Avatar person={person} size={54}/><span>{person.name}<small>{person.state}</small></span></div>)}</div></div>
       </article>
 
-      <article className="feature-card feature-recipes"><span className="feature-number">02</span><BookOpen/><h3>Create cookbooks like playlists.</h3><p>Make cookbooks for any mood, craving, or moment, then flip through them when you need inspiration. Remie searches your circle’s cookbooks first, and lets you save a recipe to your own with one click.</p><div className="recipe-slip"><small>COZY SUNDAYS · 12 RECIPES</small><strong>Sunday tomato sauce</strong><span>From Mum’s kitchen</span></div></article>
+      <article className="feature-card feature-feed"><span className="feature-number">02</span><p className="feature-label">FROM YOUR PEOPLE</p><h3>A cooking feed worth opening.</h3><p>No creators and no strangers. Just real dishes, notes, and recipes from the friends and family at your table.</p><div className="mini-feed-card"><img src={recipes[0].image} alt={recipes[0].title}/><div><Avatar person={{name:'Maya',avatar:'/assets/maya.png'}} size={34}/><span><b>Maya made this</b><small>Plum, arugula & goat cheese salad</small></span><Heart size={16}/></div></div></article>
 
-      <article className="feature-card feature-personal"><span className="feature-number">03</span><Sparkles/><h3>Remie learns how you eat.</h3><p>Over time, Remie learns your diet, allergies, preferences, goals, and cooking level. It uses what it knows to make every recipe work better for you.</p><div className="preference-row"><span>Gluten-free</span><span>High protein</span><span>No tomato</span></div></article>
+      <article className="feature-card feature-diary"><span className="feature-number">03</span><p className="feature-label">YOUR DIARY</p><h3>Remember every version.</h3><p>Log what you cooked as you go. Keep the photo, your notes, and every tweak so the version you loved is easy to make again.</p><div className="diary-preview"><div><small>SEPTEMBER 29 · DINNER</small><b>★★★★★</b></div><strong>Chocolate chip cookies</strong><span><Sparkles size={13}/> Version 10 · soft middle, crisp edge</span></div></article>
+
+      <article className="feature-wide feature-library">
+        <div><span className="feature-number">04</span><p className="feature-label">COOKBOOKS + SEARCH</p><h3>Flip through recipes like playlists.</h3><p>Build cookbooks around a mood, craving, trip, or person. Add recipes from a photo, link, voice note, or your family’s old cookbook. When you search, Remie looks through your people’s recipes first.</p><ul><li><Camera size={18}/> Capture a recipe in a click</li><li><Search size={18}/> Search your circle before the internet</li><li><BookOpen size={18}/> Save it to the right cookbook</li></ul></div>
+        <div className="cookbook-shelf-preview"><div className="cookbook-search"><Search size={16}/><span>Something cozy from Mum</span></div><div className="cookbook-stack"><article><small>12 RECIPES</small><strong>Cozy Sundays</strong><span>Mum, Maya + you</span></article><article><small>8 RECIPES</small><strong>Weeknight wins</strong><span>Ready in 30</span></article><article><small>17 RECIPES</small><strong>Things we bake</strong><span>Family favorites</span></article></div><div className="search-result"><Avatar person={{name:'Mum',avatar:'/assets/mum.png'}} size={36}/><span><small>FROM MUM’S COOKBOOK</small><b>Sunday tomato sauce</b></span><ChevronRight size={16}/></div></div>
+      </article>
 
       <article className="feature-wide feature-cook">
-        <div><span className="feature-number">04</span><h3>Simple enough for everyone.</h3><p>Cook Mode guides you one step at a time, reads instructions aloud, runs timers, and answers questions hands free. Start a live video call when you want friends or family beside you from their own kitchens.</p><ul><li><Video size={18}/> Cook live with your people</li><li><Mic size={18}/> Get hands-free recipe help</li><li><Camera size={18}/> Log and share what you made</li></ul></div>
-        <div className="cook-call"><div className="call-head"><span><i/> Cooking with Mum</span><small>18:42</small></div><img src="https://images.unsplash.com/photo-1758874960056-07aa3d0afa3b?auto=format&fit=crop&w=1200&q=85" alt="Mum cooking during a Remie video call"/><div className="call-step"><small>STEP 3 OF 6</small><strong>Stir gently until glossy.</strong><div><i/><i/><i/></div></div></div>
+        <div><span className="feature-number">05</span><p className="feature-label">COOK MODE</p><h3>A calm guide while you cook.</h3><p>Remie breaks the recipe into clear steps, reads them aloud, runs timers, and answers questions hands free. It learns your diet and cooking level, so the help feels made for you.</p><ul><li><Mic size={18}/> Ask questions without touching your phone</li><li><Sparkles size={18}/> Get guidance at your level</li><li><Camera size={18}/> Log and share the finished dish</li></ul></div>
+        <div className="cook-mode-preview"><div className="cook-mode-top"><span><i/> Cook Mode</span><small>STEP 3 OF 6</small></div><img src="/assets/app/remie-mascot.png" alt="Remie, the in-app cooking guide"/><div className="cook-mode-step"><small>NEXT UP</small><strong>Stir gently until glossy.</strong><p>About 3 minutes. I’ll keep the timer for you.</p><div><button><Mic size={17}/> Ask Remie</button><span>02:41</span></div></div></div>
       </article>
     </section>
 
