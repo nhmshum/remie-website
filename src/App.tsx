@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactElement } from 'react';
+import { useMemo, useState, type FormEvent, type ReactElement } from 'react';
 import { Bell, BookOpen, Bookmark, Camera, ChevronLeft, ChevronRight, CircleUserRound, Heart, Home, MessageCircle, Mic, MoreHorizontal, Paperclip, Plus, Search, Send, Settings, Share2, Sparkles, Star, Users, Video, X } from 'lucide-react';
 
 type View = 'landing' | 'kitchen' | 'search' | 'diary' | 'saved' | 'cookbook' | 'me';
@@ -25,26 +25,69 @@ function Avatar({ person, size = 48 }: { person: Person | { name: string; avatar
 
 function Logo() { return <button className="logo" onClick={() => location.reload()}><span className="logo-mark">♨</span><span>remie</span></button>; }
 
-function Landing() {
+const waitlistOptions = ['iOS', 'Android', 'Web', 'Separate hardware', 'All of the above'];
+
+function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }) {
   const [phone,setPhone] = useState('');
   const [countryCode,setCountryCode] = useState('+1');
-  const [waitlistNote,setWaitlistNote] = useState('');
-  const formUrl = import.meta.env.VITE_WAITLIST_FORM_URL as string | undefined;
-  const phoneField = (import.meta.env.VITE_WAITLIST_PHONE_ENTRY as string | undefined) || 'entry.0000000000';
-  const joinWaitlist = (event: React.FormEvent<HTMLFormElement>) => {
+  const [preference,setPreference] = useState('');
+  const [step,setStep] = useState<1 | 2 | 3>(1);
+  const [note,setNote] = useState('');
+  const [submitting,setSubmitting] = useState(false);
+  const endpoint = (import.meta.env.VITE_WAITLIST_ENDPOINT as string | undefined)
+    || 'https://script.google.com/macros/s/AKfycbzJUBJJ7sKkQP8FnOZ6lLGa8XnBiej1tT6uwsOv5DIyHqwGBKfXoNUdTypnCDiwaNQ/exec';
+
+  const continueWaitlist = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!/^\+?[\d\s().-]{7,20}$/.test(phone.trim())) {
-      event.preventDefault();
-      setWaitlistNote('Please enter a valid phone number.');
+      setNote('Please enter a valid phone number.');
       return;
     }
-    if (!formUrl) {
-      event.preventDefault();
-      setWaitlistNote('The waitlist connection is being finished now.');
-      return;
-    }
-    setWaitlistNote('You’re on the list. Welcome to the kitchen.');
-    window.setTimeout(()=>setPhone(''),250);
+    setNote('');
+    setStep(2);
   };
+
+  const finishWaitlist = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!preference) {
+      setNote('Choose the experience you would prefer.');
+      return;
+    }
+    if (!endpoint) {
+      setNote('The waitlist is briefly unavailable. Please try again soon.');
+      return;
+    }
+
+    setSubmitting(true);
+    setNote('');
+    try {
+      const payload = new URLSearchParams({
+        phone: `${countryCode} ${phone}`.trim(),
+        preference,
+        source: 'remiekitchen.com',
+      });
+      await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload });
+      setStep(3);
+    } catch {
+      setNote('We could not save your spot. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (step === 3) return <div className={`waitlist-confirmation ${compact ? 'compact' : ''}`} role="status"><span aria-hidden="true">✓</span><div><strong>You’re on the list.</strong><small>We’ll text you when Remie is ready for your kitchen.</small></div></div>;
+
+  if (step === 2) return <form className={`waitlist-form waitlist-preferences ${compact ? 'hero-waitlist' : ''}`} onSubmit={finishWaitlist}>
+    <div className="waitlist-step-head"><button type="button" onClick={()=>{setStep(1);setNote('')}} aria-label="Go back"><ChevronLeft size={17}/></button><span><b>One last thing</b><small>What kind of cooking experience would you prefer?</small></span></div>
+    <div className="waitlist-options">{waitlistOptions.map(option=><label key={option} className={preference === option ? 'selected' : ''}><input type="radio" name={`${id}-preference`} value={option} checked={preference === option} onChange={()=>{setPreference(option);setNote('')}}/><span>{option}</span></label>)}</div>
+    <button className="home-button waitlist-submit" type="submit" disabled={submitting}>{submitting ? 'Saving…' : 'Confirm my spot'} <ChevronRight size={18}/></button>
+    <small className="waitlist-note" aria-live="polite">{note}</small>
+  </form>;
+
+  return <form className={`waitlist-form ${compact ? 'hero-waitlist' : ''}`} onSubmit={continueWaitlist}><label htmlFor={`${id}-phone`}>Join the waitlist</label><div><select aria-label="Country code" value={countryCode} onChange={e=>setCountryCode(e.target.value)}><option value="+1">🇺🇸 +1</option><option value="+1">🇨🇦 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+64">🇳🇿 +64</option><option value="+33">🇫🇷 +33</option><option value="+49">🇩🇪 +49</option><option value="+39">🇮🇹 +39</option><option value="+34">🇪🇸 +34</option><option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+86">🇨🇳 +86</option><option value="+91">🇮🇳 +91</option><option value="+52">🇲🇽 +52</option><option value="+55">🇧🇷 +55</option></select><input id={`${id}-phone`} type="tel" autoComplete="tel-national" inputMode="tel" placeholder="Phone number" value={phone} onChange={e=>{setPhone(e.target.value);setNote('')}} required/><button className="home-button" type="submit">Continue <ChevronRight size={18}/></button></div><small aria-live="polite">{note}</small></form>;
+}
+
+function Landing() {
   return <main className="landing remie-home">
     <header className="home-nav"><Logo/><nav><a href="#features">Features</a><a href="#how-it-works">How it works</a><a className="home-button home-button-small" href="#waitlist">Join the waitlist</a></nav></header>
 
@@ -55,7 +98,7 @@ function Landing() {
         <p className="home-kicker">YOUR CLOSEST PEOPLE. 16 MAX.</p>
         <h1>A private kitchen<br/>for your people.</h1>
         <p>Remie gives your closest friends and family one place to share what they cook, cook live together, and stay close from separate kitchens.</p>
-        <form className="waitlist-form hero-waitlist" action={formUrl} method="POST" target="waitlist-response" onSubmit={joinWaitlist}><label htmlFor="hero-phone">Join the waitlist</label><div><select aria-label="Country code" value={countryCode} onChange={e=>setCountryCode(e.target.value)}><option value="+1">🇺🇸 +1</option><option value="+1">🇨🇦 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+64">🇳🇿 +64</option><option value="+33">🇫🇷 +33</option><option value="+49">🇩🇪 +49</option><option value="+39">🇮🇹 +39</option><option value="+34">🇪🇸 +34</option><option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+86">🇨🇳 +86</option><option value="+91">🇮🇳 +91</option><option value="+52">🇲🇽 +52</option><option value="+55">🇧🇷 +55</option></select><input id="hero-phone" type="tel" autoComplete="tel-national" inputMode="tel" placeholder="Phone number" value={phone} onChange={e=>{setPhone(e.target.value);setWaitlistNote('')}} required/><input type="hidden" name={phoneField} value={`${countryCode} ${phone}`.trim()}/><button className="home-button" type="submit">Join <ChevronRight size={18}/></button></div>{waitlistNote&&<small aria-live="polite">{waitlistNote}</small>}</form>
+        <WaitlistForm id="hero" compact/>
       </div>
       <div className="home-trust"><span><i/>Private by design</span><span>Up to 16 close friends and family</span></div>
     </section>
@@ -92,7 +135,7 @@ function Landing() {
       <div className="table-gathering"><img src="/assets/remie-table-gathering.png" alt="Close friends and family sharing a meal around the Remie table"/><div className="table-count">Your people <i/> one private table</div></div>
     </section>
 
-    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">YOUR INNER CIRCLE. 16 PEOPLE MAX.</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your closest friends and family into Remie.</p><form className="waitlist-form" action={formUrl} method="POST" target="waitlist-response" onSubmit={joinWaitlist}><label htmlFor="waitlist-phone">Phone number</label><div><select aria-label="Country code" value={countryCode} onChange={e=>setCountryCode(e.target.value)}><option value="+1">🇺🇸 +1</option><option value="+1">🇨🇦 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+64">🇳🇿 +64</option><option value="+33">🇫🇷 +33</option><option value="+49">🇩🇪 +49</option><option value="+39">🇮🇹 +39</option><option value="+34">🇪🇸 +34</option><option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+86">🇨🇳 +86</option><option value="+91">🇮🇳 +91</option><option value="+52">🇲🇽 +52</option><option value="+55">🇧🇷 +55</option></select><input id="waitlist-phone" type="tel" autoComplete="tel-national" inputMode="tel" placeholder="Phone number" value={phone} onChange={e=>{setPhone(e.target.value);setWaitlistNote('')}} required/><input type="hidden" name={phoneField} value={`${countryCode} ${phone}`.trim()}/><button className="home-button" type="submit">Join the waitlist <ChevronRight size={18}/></button></div>{waitlistNote&&<small aria-live="polite">{waitlistNote}</small>}</form><iframe title="Waitlist form response" name="waitlist-response" className="waitlist-frame"/></section>
+    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">YOUR INNER CIRCLE. 16 PEOPLE MAX.</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your closest friends and family into Remie.</p><WaitlistForm id="closing"/></section>
     <footer className="home-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#features">Features</a><a href="#">Privacy</a></nav></footer>
   </main>;
 }
