@@ -59,3 +59,84 @@
 @media(max-width:620px){.feature-card .feature-label{margin-bottom:48px}.app-kitchen-preview{padding:9px}.app-kitchen-preview>img{height:255px}.app-kitchen-people{inset:43px 8px 8px}.app-person .avatar{width:40px!important;height:40px!important}.app-person>span{padding:4px 6px}.app-person small{display:none}.mini-feed-card,.diary-preview{left:27px;right:27px}.mini-feed-card>img{height:155px}.cookbook-shelf-preview,.cook-mode-preview{padding:11px}.cookbook-stack{height:180px}.cookbook-stack article{padding:12px 9px}.cookbook-stack strong{font-size:15px}.cook-mode-preview>img{height:170px}}
 .feature-feed,.feature-diary{min-height:600px}
 @media(max-width:620px){.feature-feed,.feature-diary{min-height:560px}}
+
+/* Minimal Remie landing page */
+.remie-minimal{min-height:100vh;background:#18171c;color:#f8f5ef}
+.remie-hero{position:relative;min-height:100svh;overflow:hidden;background:#242126}
+.remie-hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.88) contrast(1.03)}
+.remie-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,16,20,.88) 0%,rgba(18,16,20,.56) 47%,rgba(18,16,20,.18) 76%),linear-gradient(0deg,rgba(18,16,20,.72) 0%,transparent 55%,rgba(18,16,20,.28) 100%)}
+.remie-hero-inner{position:relative;z-index:1;display:flex;min-height:100svh;max-width:1440px;margin:0 auto;padding:clamp(28px,4vw,58px) clamp(22px,5vw,76px) clamp(34px,5vw,66px);flex-direction:column}
+.remie-wordmark span{font:700 clamp(44px,5.2vw,76px)/.9 'DM Sans',sans-serif;letter-spacing:-.075em}
+.remie-wordmark p{margin:12px 0 0;font-size:clamp(18px,2vw,28px);letter-spacing:-.025em}
+.remie-hero-copy{width:min(700px,100%);margin-top:auto}
+.remie-kicker{margin:0 0 14px;color:#eadcad;font-size:11px;font-weight:800;letter-spacing:.19em}
+.remie-hero-copy h1{margin:0;font:600 clamp(50px,6.5vw,94px)/.92 'Fraunces',serif;letter-spacing:-.055em;text-wrap:balance}
+.remie-lede{max-width:620px;margin:22px 0 0;color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);line-height:1.55}
+.remie-minimal .hero-waitlist{width:min(640px,100%);margin-top:28px}
+.remie-minimal .hero-waitlist>label{margin-left:0;color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{gap:6px;padding:6px;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:rgba(248,245,239,.94);box-shadow:0 18px 50px rgba(0,0,0,.25);backdrop-filter:blur(14px)}
+.remie-minimal .waitlist-form select{border-right-color:#d8d0c6;color:#28232b}
+.remie-minimal .waitlist-form input{color:#28232b}
+.remie-minimal .waitlist-form .home-button{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:13px 18px;border-radius:11px;background:#29242d;color:#fff;font-size:13px;font-weight:800;box-shadow:none;white-space:nowrap}
+.remie-minimal .hero-waitlist>small{margin-left:0;color:rgba(255,255,255,.8)}
+.remie-minimal .hero-waitlist.waitlist-preferences{border:1px solid rgba(255,255,255,.28);border-radius:18px;background:rgba(248,245,239,.96);box-shadow:0 18px 50px rgba(0,0,0,.25)}
+.remie-minimal .waitlist-confirmation.compact{border-radius:18px;background:rgba(248,245,239,.96)}
+.remie-about{padding:clamp(52px,8vw,116px) clamp(18px,5vw,72px);background:#18171c}
+.remie-about article{width:min(1120px,100%);margin:0 auto;padding:clamp(28px,5vw,68px);border:1px solid rgba(234,220,173,.28);border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));box-shadow:inset 0 1px rgba(255,255,255,.04)}
+.remie-about h2{margin:0 0 22px;font:600 clamp(40px,6vw,76px)/1 'Fraunces',serif;letter-spacing:-.045em}
+.remie-about article>p:last-child{max-width:900px;margin:0;color:rgba(248,245,239,.76);font-size:clamp(18px,2vw,25px);line-height:1.6;letter-spacing:-.015em}
+.remie-about a,.remie-minimal-footer a{color:#f2dda0;text-decoration-color:rgba(242,221,160,.42);text-underline-offset:4px}
+.remie-about a:hover,.remie-minimal-footer a:hover{color:#fff}
+.remie-minimal-footer{display:flex;align-items:center;justify-content:space-between;max-width:1264px;margin:0 auto;padding:0 clamp(22px,5vw,72px) 42px;color:rgba(248,245,239,.46);font-size:12px}
+.remie-minimal-footer a{font-weight:700;text-decoration:none}
+@media(max-width:700px){
+  .remie-hero{min-height:760px}
+  .remie-hero-inner{min-height:760px;padding-top:28px;padding-bottom:28px}
+  .remie-hero-image{object-position:62% center}
+  .remie-hero-shade{background:linear-gradient(0deg,rgba(18,16,20,.9) 0%,rgba(18,16,20,.56) 57%,rgba(18,16,20,.24) 100%)}
+  .remie-wordmark span{font-size:48px}
+  .remie-wordmark p{margin-top:8px;font-size:19px}
+  .remie-hero-copy h1{font-size:clamp(45px,13.5vw,62px)}
+  .remie-lede{margin-top:17px;font-size:15px;line-height:1.5}
+  .remie-minimal .hero-waitlist{margin-top:20px}
+  .remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{grid-template-columns:92px 1fr;border-radius:18px}
+  .remie-minimal .waitlist-form .home-button{border-radius:11px}
+  .remie-about{padding:22px 14px 64px}
+  .remie-about article{padding:30px 24px;border-radius:20px}
+  .remie-about article>p:last-child{font-size:17px;line-height:1.58}
+  .remie-minimal-footer{align-items:flex-start;padding:0 22px 28px;flex-direction:column;gap:10px}
+}
+
+/* Radial-inspired single-column composition */
+.logo-image{width:38px;height:38px;object-fit:contain}
+.remie-minimal .remie-hero{min-height:0;padding:0;background:#18171c}
+.remie-minimal .remie-hero-inner{display:block;min-height:0;width:min(1040px,100%);padding:54px 24px 40px}
+.remie-wordmark>div{display:flex;align-items:center;gap:15px}
+.remie-wordmark img{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,.28))}
+.remie-wordmark>div span{font:700 clamp(52px,7vw,80px)/.9 'DM Sans',sans-serif;letter-spacing:-.075em}
+.remie-wordmark p{margin:12px 0 0;font-size:clamp(20px,2.5vw,31px)}
+.remie-kitchen-slide{overflow:hidden;margin-top:34px;border:1px solid rgba(222,196,113,.36);border-radius:28px;background:#f7f0df;box-shadow:0 25px 80px rgba(0,0,0,.28),0 0 40px rgba(122,87,218,.08)}
+.remie-kitchen-slide img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center;image-rendering:auto}
+.remie-minimal .remie-hero-copy{width:100%;margin:28px 0 0}
+.remie-minimal .remie-hero-copy h1{max-width:870px;font-size:clamp(42px,6vw,70px);line-height:.98}
+.remie-minimal .remie-lede{max-width:760px}
+.remie-minimal .remie-about{padding-top:18px}
+.remie-minimal .remie-kept-footer{max-width:none;background:#f8f4ea;color:#253b31}
+.remie-kept-footer .logo{color:#193f33}
+.remie-kept-footer .logo-image{width:34px;height:34px}
+.remie-kept-footer nav a{color:#253b31;text-decoration:none}
+@media(max-width:700px){
+  .remie-minimal .remie-hero{min-height:0}
+  .remie-minimal .remie-hero-inner{min-height:0;padding:30px 14px 26px}
+  .remie-wordmark>div{gap:10px}
+  .remie-wordmark img{width:52px;height:52px}
+  .remie-wordmark>div span{font-size:52px}
+  .remie-wordmark p{font-size:20px}
+  .remie-kitchen-slide{margin-top:24px;border-radius:20px}
+  .remie-kitchen-slide img{aspect-ratio:4/3;object-fit:cover}
+  .remie-minimal .remie-hero-copy h1{font-size:44px}
+  .remie-kept-footer{height:auto;min-height:108px;padding:22px;flex-wrap:wrap;gap:12px}
+  .remie-kept-footer>span{display:none}
+  .remie-kept-footer nav{margin-left:auto}
+  .remie-kept-footer nav a:first-child{display:block}
+}

@@ -23,7 +23,7 @@ function Avatar({ person, size = 48 }: { person: Person | { name: string; avatar
   return <img className="avatar" src={person.avatar} alt={`${person.name}'s pixel avatar`} style={{ width: size, height: size }} />;
 }
 
-function Logo() { return <button className="logo" onClick={() => location.reload()}><span className="logo-mark">♨</span><span>remie</span></button>; }
+function Logo() { return <button className="logo" onClick={() => location.reload()}><img className="logo-image" src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></button>; }
 
 const waitlistOptions = ['iOS', 'Android', 'Web', 'Separate hardware', 'All of the above'];
 
@@ -88,55 +88,34 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
 }
 
 function Landing() {
-  return <main className="landing remie-home">
-    <header className="home-nav"><Logo/><nav><a href="#features">Features</a><a href="#how-it-works">How it works</a><a className="home-button home-button-small" href="#waitlist">Join the waitlist</a></nav></header>
-
-    <section className="home-hero">
-      <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
-      <div className="home-hero-shade"/>
-      <div className="home-hero-copy">
-        <p className="home-kicker">YOUR CLOSEST PEOPLE. 16 MAX.</p>
-        <h1>A private kitchen<br/>for your people.</h1>
-        <p>Remie gives your closest friends and family one place to share what they cook, cook live together, and stay close from separate kitchens.</p>
-        <WaitlistForm id="hero" compact/>
+  return <main className="landing remie-minimal">
+    <section className="remie-hero" id="waitlist">
+      <div className="remie-hero-inner">
+        <header className="remie-wordmark">
+          <div><img src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></div>
+          <p>your kitchen, with company.</p>
+        </header>
+        <div className="remie-kitchen-slide">
+          <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
+        </div>
+        <div className="remie-hero-copy">
+          <p className="remie-kicker">A STRAVA FOR COOKING</p>
+          <h1>Cooking is better when we do it together.</h1>
+          <p className="remie-lede">A cozy place to share what you’re making, keep the recipes you love, and feel closer to the people you cook with.</p>
+          <WaitlistForm id="hero" compact/>
+        </div>
       </div>
-      <div className="home-trust"><span><i/>Private by design</span><span>Up to 16 close friends and family</span></div>
     </section>
 
-    <section className="home-intro">
-      <p className="home-kicker">THE APP FOR YOUR INNER CIRCLE</p>
-      <h2>Your kitchens, connected.</h2>
-      <p>Step into one shared kitchen with the people you love. See who is around, swap what you are making, keep family recipes close, and cook together from anywhere.</p>
-    </section>
-
-    <section className="home-feature-grid" id="features">
-      <article className="feature-large feature-kitchen">
-        <div className="feature-copy"><span className="feature-number">01</span><p className="feature-label">YOUR KITCHEN</p><h3>Know who is around.</h3><p>Your people appear in the kitchen when they are cooking, free to call, or just hanging out. Drop in, start a video call, or make dinner side by side from separate homes.</p><a href="#waitlist">Join your kitchen <ChevronRight size={16}/></a></div>
-        <div className="app-kitchen-preview"><div className="app-preview-bar"><span>Nicky’s Kitchen</span><b>5 of 16 here</b></div><img src="/assets/app/kitchen-room.png" alt="The Remie app kitchen with friends gathered around the island"/><div className="app-kitchen-people">{people.slice(0,4).map((person,index)=><div className={`app-person app-person-${index}`} key={person.name}><Avatar person={person} size={54}/><span>{person.name}<small>{person.state}</small></span></div>)}</div></div>
-      </article>
-
-      <article className="feature-card feature-feed"><span className="feature-number">02</span><p className="feature-label">FROM YOUR PEOPLE</p><h3>A cooking feed worth opening.</h3><p>No creators and no strangers. Just real dishes, notes, and recipes from the friends and family at your table.</p><div className="mini-feed-card"><img src={recipes[0].image} alt={recipes[0].title}/><div><Avatar person={{name:'Maya',avatar:'/assets/maya.png'}} size={34}/><span><b>Maya made this</b><small>Plum, arugula & goat cheese salad</small></span><Heart size={16}/></div></div></article>
-
-      <article className="feature-card feature-diary"><span className="feature-number">03</span><p className="feature-label">YOUR DIARY</p><h3>Remember every version.</h3><p>Log what you cooked as you go. Keep the photo, your notes, and every tweak so the version you loved is easy to make again.</p><div className="diary-preview"><div><small>SEPTEMBER 29 · DINNER</small><b>★★★★★</b></div><strong>Chocolate chip cookies</strong><span><Sparkles size={13}/> Version 10 · soft middle, crisp edge</span></div></article>
-
-      <article className="feature-wide feature-library">
-        <div><span className="feature-number">04</span><p className="feature-label">COOKBOOKS + SEARCH</p><h3>Flip through recipes like playlists.</h3><p>Build cookbooks around a mood, craving, trip, or person. Add recipes from a photo, link, voice note, or your family’s old cookbook. When you search, Remie looks through your people’s recipes first.</p><ul><li><Camera size={18}/> Capture a recipe in a click</li><li><Search size={18}/> Search your circle before the internet</li><li><BookOpen size={18}/> Save it to the right cookbook</li></ul></div>
-        <div className="cookbook-shelf-preview"><div className="cookbook-search"><Search size={16}/><span>Something cozy from Mum</span></div><div className="cookbook-stack"><article><small>12 RECIPES</small><strong>Cozy Sundays</strong><span>Mum, Maya + you</span></article><article><small>8 RECIPES</small><strong>Weeknight wins</strong><span>Ready in 30</span></article><article><small>17 RECIPES</small><strong>Things we bake</strong><span>Family favorites</span></article></div><div className="search-result"><Avatar person={{name:'Mum',avatar:'/assets/mum.png'}} size={36}/><span><small>FROM MUM’S COOKBOOK</small><b>Sunday tomato sauce</b></span><ChevronRight size={16}/></div></div>
-      </article>
-
-      <article className="feature-wide feature-cook">
-        <div><span className="feature-number">05</span><p className="feature-label">COOK MODE</p><h3>A calm guide while you cook.</h3><p>Remie breaks the recipe into clear steps, reads them aloud, runs timers, and answers questions hands free. It learns your diet and cooking level, so the help feels made for you.</p><ul><li><Mic size={18}/> Ask questions without touching your phone</li><li><Sparkles size={18}/> Get guidance at your level</li><li><Camera size={18}/> Log and share the finished dish</li></ul></div>
-        <div className="cook-mode-preview"><div className="cook-mode-top"><span><i/> Cook Mode</span><small>STEP 3 OF 6</small></div><img src="/assets/app/remie-mascot.png" alt="Remie, the in-app cooking guide"/><div className="cook-mode-step"><small>NEXT UP</small><strong>Stir gently until glossy.</strong><p>About 3 minutes. I’ll keep the timer for you.</p><div><button><Mic size={17}/> Ask Remie</button><span>02:41</span></div></div></div>
+    <section className="remie-about" aria-labelledby="about-remie">
+      <article>
+        <p className="remie-kicker">WHAT WE’RE BUILDING</p>
+        <h2 id="about-remie">Meet Remie.</h2>
+        <p>We’re building Remie as a Strava for cooking: a warm community where you can share what you make, learn from the people you trust, remember the little tweaks that made a dish yours, and find more reasons to cook together. If you’d like to chat further, tell us about your cooking pain points, or share what you’d want in a Strava for cooking community, email me at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a> — I’d love to hear from you.</p>
       </article>
     </section>
 
-    <section className="home-table-section" id="how-it-works">
-      <div className="table-story"><p className="home-kicker">WHY 16 PEOPLE?</p><h2>Close enough to feel like your table.</h2><p>Remie is intentionally small. Sixteen is enough room for the people you love, without followers, strangers, or the pressure to perform. Everyone around the table belongs there.</p></div>
-      <div className="table-gathering"><img src="/assets/remie-table-gathering.png" alt="Close friends and family sharing a meal around the Remie table"/><div className="table-count">Your people <i/> one private table</div></div>
-    </section>
-
-    <section className="home-closing" id="waitlist"><div className="closing-avatars">{people.map(p=><Avatar key={p.name} person={p} size={58}/>)}</div><p className="home-kicker">YOUR INNER CIRCLE. 16 PEOPLE MAX.</p><h2>Save your seat at the table.</h2><p>Be one of the first to bring your closest friends and family into Remie.</p><WaitlistForm id="closing"/></section>
-    <footer className="home-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#features">Features</a><a href="#">Privacy</a></nav></footer>
+    <footer className="home-footer remie-kept-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#about-remie">About</a><a href="mailto:remiekitchen@gmail.com">Contact</a></nav></footer>
   </main>;
 }
 
