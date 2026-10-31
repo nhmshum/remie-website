@@ -25,12 +25,10 @@ function Avatar({ person, size = 48 }: { person: Person | { name: string; avatar
 
 function Logo() { return <button className="logo" onClick={() => location.reload()}><img className="logo-image" src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></button>; }
 
-const waitlistOptions = ['iOS', 'Android', 'Web', 'Separate hardware', 'All of the above'];
-
 function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }) {
   const [phone,setPhone] = useState('');
   const [countryCode,setCountryCode] = useState('+1');
-  const [preference,setPreference] = useState('');
+  const [painPoint,setPainPoint] = useState('');
   const [step,setStep] = useState<1 | 2 | 3>(1);
   const [note,setNote] = useState('');
   const [submitting,setSubmitting] = useState(false);
@@ -49,10 +47,6 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
 
   const finishWaitlist = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!preference) {
-      setNote('Choose the experience you would prefer.');
-      return;
-    }
     if (!endpoint) {
       setNote('The waitlist is briefly unavailable. Please try again soon.');
       return;
@@ -63,7 +57,7 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
     try {
       const payload = new URLSearchParams({
         phone: `${countryCode} ${phone}`.trim(),
-        preference,
+        painPoint: painPoint.trim(),
         source: 'remiekitchen.com',
       });
       await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload });
@@ -78,9 +72,10 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
   if (step === 3) return <div className={`waitlist-confirmation ${compact ? 'compact' : ''}`} role="status"><span aria-hidden="true">✓</span><div><strong>You’re on the list.</strong><small>We’ll text you when Remie is ready for your kitchen.</small></div></div>;
 
   if (step === 2) return <form className={`waitlist-form waitlist-preferences ${compact ? 'hero-waitlist' : ''}`} onSubmit={finishWaitlist}>
-    <div className="waitlist-step-head"><button type="button" onClick={()=>{setStep(1);setNote('')}} aria-label="Go back"><ChevronLeft size={17}/></button><span><b>One last thing</b><small>What kind of cooking experience would you prefer?</small></span></div>
-    <div className="waitlist-options">{waitlistOptions.map(option=><label key={option} className={preference === option ? 'selected' : ''}><input type="radio" name={`${id}-preference`} value={option} checked={preference === option} onChange={()=>{setPreference(option);setNote('')}}/><span>{option}</span></label>)}</div>
-    <button className="home-button waitlist-submit" type="submit" disabled={submitting}>{submitting ? 'Saving…' : 'Confirm my spot'} <ChevronRight size={18}/></button>
+    <div className="waitlist-step-head"><button type="button" onClick={()=>{setStep(1);setNote('')}} aria-label="Go back"><ChevronLeft size={17}/></button><span><b>One quick question</b><small>Optional — skip it if you’d like.</small></span></div>
+    <label className="pain-point-label" htmlFor={`${id}-pain-point`}>What’s your biggest pain point when it comes to cooking?</label>
+    <textarea id={`${id}-pain-point`} value={painPoint} onChange={e=>setPainPoint(e.target.value)} placeholder="Tell us what makes cooking harder than it should be…" rows={4}/>
+    <button className="home-button waitlist-submit" type="submit" disabled={submitting}>{submitting ? 'Saving…' : 'Join the waitlist'} <ChevronRight size={18}/></button>
     <small className="waitlist-note" aria-live="polite">{note}</small>
   </form>;
 

@@ -126,6 +126,7 @@
 .remie-kept-footer .logo-image{width:34px;height:34px}
 .remie-kept-footer nav{margin-left:auto}
 .remie-kept-footer nav a{color:#253b31;text-decoration:none}
+.remie-minimal .waitlist-preferences{color:#28232b}.remie-minimal .waitlist-preferences .waitlist-step-head b,.remie-minimal .waitlist-preferences .pain-point-label{color:#28232b}.remie-minimal .waitlist-preferences .waitlist-step-head>button{color:#193f33}.pain-point-label{display:block;margin:2px 2px 9px;color:#28232b;font:600 18px/1.3 'Fraunces',serif;letter-spacing:0;text-transform:none}.remie-minimal .hero-waitlist.waitlist-preferences>.pain-point-label{margin:2px 2px 9px;color:#28232b;font:600 18px/1.3 'Fraunces',serif;letter-spacing:0;text-transform:none}.waitlist-preferences textarea{display:block;width:100%;min-height:105px;padding:13px 14px;resize:vertical;border:1px solid #d8d0c2;border-radius:13px;outline:0;background:#fff;color:#28232b;font:500 14px/1.45 'DM Sans',sans-serif}.waitlist-preferences textarea:focus{border-color:#193f33;box-shadow:0 0 0 3px rgba(25,63,51,.1)}.waitlist-preferences textarea::placeholder{color:#9a958c}
 @media(max-width:700px){
   .remie-minimal .remie-hero{min-height:0}
   .remie-minimal .remie-hero-inner{min-height:0;padding:30px 14px 26px}
