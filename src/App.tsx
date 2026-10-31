@@ -101,7 +101,7 @@ function Landing() {
         <div className="remie-hero-copy">
           <p className="remie-kicker">A STRAVA FOR COOKING</p>
           <h1>Cooking is better when we do it together.</h1>
-          <p className="remie-lede">A cozy place to share what you’re making, keep the recipes you love, and feel closer to the people you cook with.</p>
+          <p className="remie-lede">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</p>
           <WaitlistForm id="hero" compact/>
         </div>
       </div>
@@ -115,7 +115,7 @@ function Landing() {
       </article>
     </section>
 
-    <footer className="home-footer remie-kept-footer"><Logo/><span>Made for people who feed each other.</span><nav><a href="#about-remie">About</a><a href="mailto:remiekitchen@gmail.com">Contact</a></nav></footer>
+    <footer className="home-footer remie-kept-footer"><Logo/><nav><a href="#about-remie">About</a><a href="mailto:remiekitchen@gmail.com">Contact</a></nav></footer>
   </main>;
 }
 

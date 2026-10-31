@@ -124,6 +124,7 @@
 .remie-minimal .remie-kept-footer{max-width:none;background:#f8f4ea;color:#253b31}
 .remie-kept-footer .logo{color:#193f33}
 .remie-kept-footer .logo-image{width:34px;height:34px}
+.remie-kept-footer nav{margin-left:auto}
 .remie-kept-footer nav a{color:#253b31;text-decoration:none}
 @media(max-width:700px){
   .remie-minimal .remie-hero{min-height:0}
