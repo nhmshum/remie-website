@@ -1,5 +1,6 @@
 import { useMemo, useState, type FormEvent, type ReactElement } from 'react';
 import { Bell, BookOpen, Bookmark, Camera, ChevronLeft, ChevronRight, CircleUserRound, Heart, Home, MessageCircle, Mic, MoreHorizontal, Paperclip, Plus, Search, Send, Settings, Share2, Sparkles, Star, Users, Video, X } from 'lucide-react';
+import { trackEvent } from './analytics';
 
 type View = 'landing' | 'kitchen' | 'search' | 'diary' | 'saved' | 'cookbook' | 'me';
 type Person = { name: string; avatar: string; state: string; color: string };
@@ -42,6 +43,7 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
       return;
     }
     setNote('');
+    trackEvent('waitlist_started');
     setStep(2);
   };
 
@@ -61,6 +63,7 @@ function WaitlistForm({ id, compact = false }: { id: string; compact?: boolean }
         source: 'remiekitchen.com',
       });
       await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: payload });
+      trackEvent('waitlist_signup', { has_pain_point: Boolean(painPoint.trim()) });
       setStep(3);
     } catch {
       setNote('We could not save your spot. Please try again.');

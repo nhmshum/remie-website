@@ -20,6 +20,10 @@ npm run preview
 
 The compiled website is written to `dist/`.
 
+## Analytics
+
+Set `VITE_GA_MEASUREMENT_ID` to the site's GA4 web-stream measurement ID before building. The site records automatic page views plus `waitlist_started` and `waitlist_signup` conversion events.
+
 ## Free hosting
 
 The site deploys to GitHub Pages whenever `main` is updated. GitHub Pages is
