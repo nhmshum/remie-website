@@ -108,15 +108,15 @@ function Landing() {
 
     <section className="remie-product" id="features" aria-labelledby="product-features-title">
       <header className="remie-product-heading">
-        <p className="remie-kicker">INSIDE REMIE</p>
-        <h2 id="product-features-title">A kitchen that keeps your people close.</h2>
-        <p>Three simple ways Remie turns everyday cooking into something shared, remembered, and easier to come back to.</p>
+        <p className="remie-kicker">A COLLABORATIVE COOKBOOK</p>
+        <h2 id="product-features-title">For the meals we remember.</h2>
+        <p>Remie turns everyday cooking into something shared, remembered, and easier to come back to.</p>
       </header>
 
       <div className="remie-feature-list">
         <article className="remie-feature remie-feature-kitchen">
           <div className="remie-feature-copy">
-            <span>01 · COOK IT YOUR WAY</span>
+            <span>COOK IT YOUR WAY</span>
             <h3>Make every recipe a little more yours.</h3>
             <p>Keep the dish, your notes, ratings, and the story around it in one place. Each time you cook, your version grows with you—and stays easy to share with the people you love.</p>
           </div>
@@ -125,7 +125,7 @@ function Landing() {
 
         <article className="remie-feature remie-feature-library">
           <div className="remie-feature-copy">
-            <span>02 · FROM YOUR PEOPLE</span>
+            <span>FROM YOUR PEOPLE</span>
             <h3>A cooking feed that feels like your group chat.</h3>
             <p>Share the real dishes, messy experiments, and little wins that happen between your closest people. Swap notes, cheer each other on, and decide what to make next.</p>
           </div>
@@ -134,7 +134,7 @@ function Landing() {
 
         <article className="remie-feature remie-feature-guide">
           <div className="remie-feature-copy">
-            <span>03 · YOUR LIVING COOKBOOK</span>
+            <span>YOUR LIVING COOKBOOK</span>
             <h3>Keep the recipes that feel like home.</h3>
             <p>Bring saved recipes, family favorites, and every version you’ve cooked into one place. Find them by mood, memory, or person whenever you need a little inspiration.</p>
           </div>
@@ -145,8 +145,8 @@ function Landing() {
 
     <section className="remie-about" aria-labelledby="about-remie">
       <article>
-        <h2 id="about-remie">Recipes carry the people we love.</h2>
-        <p>Remie brings the family recipes, weeknight wins, and dishes from friends that are scattered across screenshots, bookmarks, and group chats into one living cookbook. Save a recipe, cook someone’s dish, make it your own, and pass your version back to the people at your table. Over time, your shared collection becomes more than a place to find dinner—it holds your tastes, traditions, and memories. Have ideas or want to share feedback? Run a cooking club and want to join our private beta? Email me at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a>.</p>
+        <div><p className="remie-kicker">WHY REMIE</p><h2 id="about-remie">Recipes carry the people we love.</h2></div>
+        <p>Remie brings the family recipes, weeknight wins, and dishes from friends that are scattered across screenshots, bookmarks, and group chats into one living cookbook. Save a recipe, cook someone’s dish, make it your own, and pass your version back to the people at your table. Over time, your shared collection becomes more than a place to find dinner—it holds your tastes, traditions, and memories. Have ideas or want to share feedback? Run a cooking club and want to join us? Email me at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a>.</p>
       </article>
     </section>
 
