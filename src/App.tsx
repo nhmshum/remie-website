@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent, type ReactElement } from 'react';
+import { useMemo, useState, type CSSProperties, type FormEvent, type ReactElement } from 'react';
 import { Bell, BookOpen, Bookmark, Camera, ChevronLeft, ChevronRight, CircleUserRound, Heart, Home, MessageCircle, Mic, MoreHorizontal, Paperclip, Plus, Search, Send, Settings, Share2, Sparkles, Star, Users, Video, X } from 'lucide-react';
 import { trackEvent } from './analytics';
 
@@ -97,7 +97,9 @@ function Landing() {
           <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
         </div>
         <div className="remie-hero-copy">
-          <h1>Cooking is better when we do it together.</h1>
+          <h1 className="hero-word-reveal" aria-label="Cooking is better when we do it together.">
+            {['Cooking','is','better','when','we','do','it','together.'].map((word,index)=><span key={word} style={{'--word-index':index} as CSSProperties} aria-hidden="true">{word}</span>)}
+          </h1>
           <p className="remie-lede">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</p>
           <WaitlistForm id="hero" compact hideSubmit/>
         </div>
