@@ -276,3 +276,36 @@
 .remie-minimal .remie-bottom-waitlist .home-button:hover{background:#a85438}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:620px){.remie-bottom-waitlist{padding:54px 14px}.remie-bottom-waitlist h2{font-size:32px}.remie-bottom-waitlist>p:not(.remie-kicker){font-size:15px;white-space:normal}}
+
+/* Image-led hero and roomier final type scale */
+.remie-minimal .remie-hero{min-height:clamp(760px,92svh,920px);background:#173d31}
+.remie-minimal .remie-hero-inner{position:relative;width:100%;max-width:none;min-height:clamp(760px,92svh,920px);padding:clamp(38px,5vw,64px) max(28px,calc((100vw - 1180px)/2));overflow:hidden}
+.remie-minimal .remie-hero-inner::after{position:absolute;z-index:1;inset:0;content:"";pointer-events:none;background:linear-gradient(180deg,rgba(248,244,234,.94) 0%,rgba(248,244,234,.42) 22%,rgba(23,61,49,.06) 46%,rgba(23,61,49,.9) 100%)}
+.remie-minimal .remie-kitchen-slide{position:absolute;z-index:0;inset:0;margin:0;border:0;border-radius:0;box-shadow:none}
+.remie-minimal .remie-kitchen-slide img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 48%}
+.remie-minimal .remie-wordmark{position:relative;z-index:2}
+.remie-minimal .remie-wordmark p{font-size:clamp(22px,2.35vw,34px)}
+.remie-minimal .remie-hero-copy{position:absolute;z-index:2;right:max(28px,calc((100vw - 1180px)/2));bottom:clamp(40px,6vw,68px);left:max(28px,calc((100vw - 1180px)/2));width:auto;margin:0}
+.remie-minimal .remie-hero-copy h1{max-width:none;color:#f8f4ea;font-size:clamp(44px,5vw,62px);line-height:.9;text-shadow:0 3px 24px rgba(16,40,31,.24)}
+.remie-minimal .remie-lede{max-width:810px;margin-top:19px;color:rgba(248,244,234,.9);font-size:clamp(18px,1.55vw,21px);line-height:1.55}
+.remie-minimal .hero-waitlist>label,.remie-minimal .hero-waitlist>small{color:#f8f4ea}
+.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{border-color:rgba(248,244,234,.55);background:rgba(255,253,248,.96);box-shadow:0 18px 45px rgba(12,39,31,.3)}
+.remie-product-heading h2{font-size:clamp(36px,4.1vw,50px)}
+.remie-product-heading>p:last-child{font-size:19px}
+.remie-feature-copy h3{font-size:clamp(30px,3.2vw,42px)}
+.remie-feature-copy p{font-size:18px}
+.remie-minimal .remie-about h2{font-size:clamp(36px,4.2vw,50px)}
+.remie-about article>p:last-child{font-size:clamp(18px,1.65vw,22px)}
+@media(max-width:620px){
+  .remie-minimal .remie-hero,.remie-minimal .remie-hero-inner{min-height:780px}
+  .remie-minimal .remie-hero-inner{padding:24px 20px}
+  .remie-minimal .remie-hero-inner::after{background:linear-gradient(180deg,rgba(248,244,234,.95) 0%,rgba(248,244,234,.34) 25%,rgba(23,61,49,.12) 44%,rgba(23,61,49,.94) 100%)}
+  .remie-minimal .remie-kitchen-slide img{object-position:54% center}
+  .remie-minimal .remie-wordmark p{max-width:320px;font-size:20px;line-height:1.2}
+  .remie-minimal .remie-hero-copy{right:20px;bottom:28px;left:20px}
+  .remie-minimal .remie-hero-copy h1{font-size:38px;line-height:.92}
+  .remie-minimal .remie-lede{font-size:16px;line-height:1.48}
+  .remie-product-heading>p:last-child{font-size:17px}
+  .remie-feature-copy h3{font-size:31px}
+  .remie-feature-copy p{font-size:16px}
+}
