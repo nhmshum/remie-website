@@ -251,10 +251,11 @@
 
 .remie-bottom-waitlist{padding:clamp(60px,7vw,88px) 24px;text-align:center;background:#173d31;color:#f8f4ea}
 .remie-bottom-waitlist h2{margin:0;font:400 clamp(32px,3.8vw,46px)/.92 'Darumadrop One',sans-serif;letter-spacing:.005em}
-.remie-bottom-waitlist>p:not(.remie-kicker){max-width:560px;margin:16px auto 0;color:rgba(248,244,234,.76);font-size:16px;line-height:1.6}
+.remie-bottom-waitlist>p:not(.remie-kicker){margin:16px auto 0;color:rgba(248,244,234,.76);font-size:16px;line-height:1.6;white-space:nowrap}
 .remie-bottom-waitlist .waitlist-form{margin-top:26px}
 .remie-bottom-waitlist .waitlist-form>label{color:#f8f4ea}
 .remie-bottom-waitlist .waitlist-form>small{color:rgba(248,244,234,.8)}
 .remie-minimal .remie-bottom-waitlist .home-button{background:#bd6545}
 .remie-minimal .remie-bottom-waitlist .home-button:hover{background:#a85438}
-@media(max-width:620px){.remie-bottom-waitlist{padding:54px 14px}.remie-bottom-waitlist h2{font-size:32px}.remie-bottom-waitlist>p:not(.remie-kicker){font-size:15px}}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:620px){.remie-bottom-waitlist{padding:54px 14px}.remie-bottom-waitlist h2{font-size:32px}.remie-bottom-waitlist>p:not(.remie-kicker){font-size:15px;white-space:normal}}
