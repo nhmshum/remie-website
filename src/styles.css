@@ -337,3 +337,15 @@
 .remie-minimal .waitlist-form select{padding-right:34px;border-right:0}
 .remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:16px;padding-left:28px;border-left:1px solid #d8d0c6}
 @media(max-width:620px){.remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:10px;padding-left:22px}}
+
+/* Quiet, legible masthead above the cinematic kitchen */
+.remie-minimal .remie-hero-inner{padding-top:34px}
+.remie-minimal .remie-hero-inner::before{position:absolute;z-index:1;top:0;right:0;left:0;height:150px;content:"";background:#f8f4ea;box-shadow:0 1px 0 rgba(23,61,49,.08)}
+.remie-minimal .remie-wordmark{display:flex;min-height:82px;align-items:center;justify-content:space-between;gap:40px}
+.remie-minimal .remie-wordmark p{max-width:520px;margin:0;text-align:right;font-size:clamp(19px,1.8vw,25px);line-height:1.25}
+@media(max-width:620px){
+  .remie-minimal .remie-hero-inner{padding-top:22px}
+  .remie-minimal .remie-hero-inner::before{height:154px}
+  .remie-minimal .remie-wordmark{display:block;min-height:112px}
+  .remie-minimal .remie-wordmark p{max-width:320px;margin-top:8px;text-align:left;font-size:18px}
+}
