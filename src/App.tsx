@@ -148,6 +148,13 @@ function Landing() {
       </article>
     </section>
 
+    <section className="remie-bottom-waitlist" aria-labelledby="bottom-waitlist-title">
+      <p className="remie-kicker">PRIVATE BETA</p>
+      <h2 id="bottom-waitlist-title">Join the Remie waitlist.</h2>
+      <p>Be among the first to bring your closest people and favorite recipes around one table.</p>
+      <WaitlistForm id="bottom" />
+    </section>
+
     <footer className="home-footer remie-kept-footer"><Logo/><nav><a href="#about-remie">About</a><a href="mailto:remiekitchen@gmail.com">Contact</a></nav></footer>
   </main>;
 }
