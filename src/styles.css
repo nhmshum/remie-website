@@ -221,3 +221,8 @@
 .product-phone img{width:100%;height:auto}
 @media(max-width:900px){.remie-feature{min-height:0}.product-phone{width:min(360px,100%)}}
 @media(max-width:620px){.product-phone{width:100%;border-width:6px;border-radius:27px}}
+
+/* Daruma display typography */
+.remie-minimal .remie-hero-copy h1,.remie-product-heading h2,.remie-feature-copy h3,.remie-minimal .remie-about h2{font-family:'Darumadrop One',sans-serif;font-weight:400;letter-spacing:.005em}
+.remie-minimal .remie-hero-copy h1{line-height:.88}
+.remie-product-heading h2,.remie-feature-copy h3,.remie-minimal .remie-about h2{line-height:.92}

@@ -114,11 +114,11 @@ function Landing() {
       <div className="remie-feature-list">
         <article className="remie-feature remie-feature-kitchen">
           <div className="remie-feature-copy">
-            <span>01 · YOUR SHARED KITCHEN</span>
-            <h3>See who’s around and cook together.</h3>
-            <p>Your closest people show up when they’re cooking, free to call, or simply hanging out. Drop in and make dinner together—even from different homes.</p>
+            <span>01 · COOK IT YOUR WAY</span>
+            <h3>Make every recipe a little more yours.</h3>
+            <p>Keep the dish, your notes, ratings, and the story around it in one place. Each time you cook, your version grows with you—and stays easy to share with the people you love.</p>
           </div>
-          <div className="product-phone"><img src="/assets/product/remie-kitchen-02.jpg" alt="Remie shared kitchen screen with friends gathered together"/></div>
+          <div className="product-phone"><img src="/assets/product/remie-recipe-detail.jpg" alt="A personal recipe and cooking memory saved in Remie"/></div>
         </article>
 
         <article className="remie-feature remie-feature-library">
