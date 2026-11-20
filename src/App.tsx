@@ -144,7 +144,7 @@ function Landing() {
     <section className="remie-about" aria-labelledby="about-remie">
       <article>
         <h2 id="about-remie">Recipes carry the people we love.</h2>
-        <p>Remie brings the family recipes, weeknight wins, and dishes from friends that are scattered across screenshots, bookmarks, and group chats into one living cookbook. Save a recipe, cook someone’s dish, make it your own, and pass your version back to the people at your table. Over time, your shared collection becomes more than a place to find dinner—it holds your tastes, traditions, and memories. Have a recipe story or something you wish cooking apps understood? Write to us at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a>.</p>
+        <p>Remie brings the family recipes, weeknight wins, and dishes from friends that are scattered across screenshots, bookmarks, and group chats into one living cookbook. Save a recipe, cook someone’s dish, make it your own, and pass your version back to the people at your table. Over time, your shared collection becomes more than a place to find dinner—it holds your tastes, traditions, and memories. Have ideas or want to share feedback? Run a cooking club and want to join our private beta? Email me at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a>.</p>
       </article>
     </section>
 
