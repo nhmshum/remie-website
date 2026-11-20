@@ -97,7 +97,6 @@ function Landing() {
           <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
         </div>
         <div className="remie-hero-copy">
-          <p className="remie-kicker">A STRAVA FOR COOKING</p>
           <h1>Cooking is better when we do it together.</h1>
           <p className="remie-lede">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</p>
           <WaitlistForm id="hero" compact/>
