@@ -105,11 +105,47 @@ function Landing() {
       </div>
     </section>
 
+    <section className="remie-product" id="features" aria-labelledby="product-features-title">
+      <header className="remie-product-heading">
+        <p className="remie-kicker">INSIDE REMIE</p>
+        <h2 id="product-features-title">A kitchen that keeps your people close.</h2>
+        <p>Three simple ways Remie turns everyday cooking into something shared, remembered, and easier to come back to.</p>
+      </header>
+
+      <div className="remie-feature-list">
+        <article className="remie-feature remie-feature-kitchen">
+          <div className="remie-feature-copy">
+            <span>01 · YOUR SHARED KITCHEN</span>
+            <h3>See who’s around and cook together.</h3>
+            <p>Your closest people show up when they’re cooking, free to call, or simply hanging out. Drop in and make dinner together—even from different homes.</p>
+          </div>
+          <div className="product-phone"><img src="/assets/product/remie-kitchen-02.jpg" alt="Remie shared kitchen screen with friends gathered together"/></div>
+        </article>
+
+        <article className="remie-feature remie-feature-library">
+          <div className="remie-feature-copy">
+            <span>02 · FROM YOUR PEOPLE</span>
+            <h3>A cooking feed that feels like your group chat.</h3>
+            <p>Share the real dishes, messy experiments, and little wins that happen between your closest people. Swap notes, cheer each other on, and decide what to make next.</p>
+          </div>
+          <div className="product-phone"><img src="/assets/product/remie-kitchen-03.jpg" alt="A dish shared with friends in the Remie cooking feed"/></div>
+        </article>
+
+        <article className="remie-feature remie-feature-guide">
+          <div className="remie-feature-copy">
+            <span>03 · YOUR LIVING COOKBOOK</span>
+            <h3>Keep the recipes that feel like home.</h3>
+            <p>Bring saved recipes, family favorites, and every version you’ve cooked into one place. Find them by mood, memory, or person whenever you need a little inspiration.</p>
+          </div>
+          <div className="product-phone"><img src="/assets/product/remie-kitchen-04.jpg" alt="Cookbooks and saved recipes in the Remie library"/></div>
+        </article>
+      </div>
+    </section>
+
     <section className="remie-about" aria-labelledby="about-remie">
       <article>
-        <p className="remie-kicker">WHAT WE’RE BUILDING</p>
-        <h2 id="about-remie">Meet Remie.</h2>
-        <p>We’re building Remie as a Strava for cooking: a warm community where you can share what you make, learn from the people you trust, remember the little tweaks that made a dish yours, and find more reasons to cook together. If you’d like to chat further, tell us about your cooking pain points, or share what you’d want in a Strava for cooking community, email me at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a> — I’d love to hear from you.</p>
+        <h2 id="about-remie">Recipes carry the people we love.</h2>
+        <p>Remie brings the family recipes, weeknight wins, and dishes from friends that are scattered across screenshots, bookmarks, and group chats into one living cookbook. Save a recipe, cook someone’s dish, make it your own, and pass your version back to the people at your table. Over time, your shared collection becomes more than a place to find dinner—it holds your tastes, traditions, and memories. Have a recipe story or something you wish cooking apps understood? Write to us at <a href="mailto:remiekitchen@gmail.com">remiekitchen@gmail.com</a>.</p>
       </article>
     </section>
 
