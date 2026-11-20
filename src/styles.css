@@ -332,3 +332,8 @@
 @media(prefers-reduced-motion:reduce){
   .remie-minimal .remie-kitchen-slide img,.remie-minimal .remie-wordmark,.hero-word-reveal>span,.remie-minimal .remie-lede,.remie-minimal .hero-waitlist,.remie-product-heading,.remie-feature-copy,.product-phone,.remie-about article{animation:none!important;transition:none!important;transform:none!important;translate:none!important;filter:none!important;opacity:1!important}
 }
+
+/* Give the country chevron breathing room before the divider */
+.remie-minimal .waitlist-form select{padding-right:34px;border-right:0}
+.remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:16px;padding-left:28px;border-left:1px solid #d8d0c6}
+@media(max-width:620px){.remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:10px;padding-left:22px}}
