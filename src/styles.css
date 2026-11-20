@@ -349,3 +349,16 @@
   .remie-minimal .remie-wordmark{display:block;min-height:112px}
   .remie-minimal .remie-wordmark p{max-width:320px;margin-top:8px;text-align:left;font-size:18px}
 }
+
+/* Integrate the masthead with the kitchen instead of blocking it */
+.remie-minimal .remie-hero-inner{padding-top:26px}
+.remie-minimal .remie-hero-inner::before{top:16px;right:max(18px,calc((100vw - 1220px)/2));left:max(18px,calc((100vw - 1220px)/2));height:100px;border:1px solid rgba(248,244,234,.18);border-radius:26px;background:rgba(23,61,49,.82);box-shadow:0 14px 40px rgba(12,38,29,.18);backdrop-filter:blur(12px)}
+.remie-minimal .remie-hero-inner::after{background:linear-gradient(180deg,rgba(23,61,49,.06) 0%,rgba(23,61,49,.03) 26%,rgba(23,61,49,.08) 48%,rgba(23,61,49,.9) 100%)}
+.remie-minimal .remie-wordmark{min-height:80px}
+.remie-minimal .remie-wordmark img{width:62px;height:62px;padding:7px;border-radius:16px;background:rgba(248,244,234,.96);filter:none;box-shadow:0 7px 22px rgba(8,28,21,.22)}
+.remie-minimal .remie-wordmark>div span,.remie-minimal .remie-wordmark p{color:#f8f4ea;text-shadow:0 2px 18px rgba(7,27,20,.25)}
+@media(max-width:620px){
+  .remie-minimal .remie-hero-inner{padding-top:18px}
+  .remie-minimal .remie-hero-inner::before{top:10px;right:10px;left:10px;height:132px;border-radius:20px}
+  .remie-minimal .remie-wordmark img{width:52px;height:52px;padding:6px;border-radius:14px}
+}
