@@ -26,7 +26,7 @@ function Avatar({ person, size = 48 }: { person: Person | { name: string; avatar
 
 function Logo() { return <button className="logo" onClick={() => location.reload()}><img className="logo-image" src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></button>; }
 
-function WaitlistForm({ id, compact = false, hideLabel = false, buttonLabel = 'Continue' }: { id: string; compact?: boolean; hideLabel?: boolean; buttonLabel?: string }) {
+function WaitlistForm({ id, compact = false, hideLabel = false, hideSubmit = false, buttonLabel = 'Continue' }: { id: string; compact?: boolean; hideLabel?: boolean; hideSubmit?: boolean; buttonLabel?: string }) {
   const [phone,setPhone] = useState('');
   const [countryCode,setCountryCode] = useState('+1');
   const [painPoint,setPainPoint] = useState('');
@@ -82,7 +82,7 @@ function WaitlistForm({ id, compact = false, hideLabel = false, buttonLabel = 'C
     <small className="waitlist-note" aria-live="polite">{note}</small>
   </form>;
 
-  return <form className={`waitlist-form ${compact ? 'hero-waitlist' : ''}`} onSubmit={continueWaitlist}><label className={hideLabel ? 'visually-hidden' : ''} htmlFor={`${id}-phone`}>Join the waitlist</label><div><select aria-label="Country code" value={countryCode} onChange={e=>setCountryCode(e.target.value)}><option value="+1">🇺🇸 +1</option><option value="+1">🇨🇦 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+64">🇳🇿 +64</option><option value="+33">🇫🇷 +33</option><option value="+49">🇩🇪 +49</option><option value="+39">🇮🇹 +39</option><option value="+34">🇪🇸 +34</option><option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+86">🇨🇳 +86</option><option value="+91">🇮🇳 +91</option><option value="+52">🇲🇽 +52</option><option value="+55">🇧🇷 +55</option></select><input id={`${id}-phone`} type="tel" autoComplete="tel-national" inputMode="tel" placeholder="Phone number" value={phone} onChange={e=>{setPhone(e.target.value);setNote('')}} required/><button className="home-button" type="submit">{buttonLabel} <ChevronRight size={18}/></button></div><small aria-live="polite">{note}</small></form>;
+  return <form className={`waitlist-form ${compact ? 'hero-waitlist' : ''}`} onSubmit={continueWaitlist}><label className={hideLabel ? 'visually-hidden' : ''} htmlFor={`${id}-phone`}>Join the waitlist</label><div><select aria-label="Country code" value={countryCode} onChange={e=>setCountryCode(e.target.value)}><option value="+1">🇺🇸 +1</option><option value="+1">🇨🇦 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+64">🇳🇿 +64</option><option value="+33">🇫🇷 +33</option><option value="+49">🇩🇪 +49</option><option value="+39">🇮🇹 +39</option><option value="+34">🇪🇸 +34</option><option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+86">🇨🇳 +86</option><option value="+91">🇮🇳 +91</option><option value="+52">🇲🇽 +52</option><option value="+55">🇧🇷 +55</option></select><input id={`${id}-phone`} type="tel" autoComplete="tel-national" inputMode="tel" placeholder="Phone number" value={phone} onChange={e=>{setPhone(e.target.value);setNote('')}} required/>{!hideSubmit&&<button className="home-button" type="submit">{buttonLabel} <ChevronRight size={18}/></button>}</div><small aria-live="polite">{note}</small></form>;
 }
 
 function Landing() {
@@ -91,7 +91,7 @@ function Landing() {
       <div className="remie-hero-inner">
         <header className="remie-wordmark">
           <div><img src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></div>
-          <p>your kitchen, with company.</p>
+          <p>A collaborative cookbook for your inner circle.</p>
         </header>
         <div className="remie-kitchen-slide">
           <img src="/assets/remie-main-kitchen.png" alt="Friends and family cooking together in the Remie kitchen"/>
@@ -99,7 +99,7 @@ function Landing() {
         <div className="remie-hero-copy">
           <h1>Cooking is better when we do it together.</h1>
           <p className="remie-lede">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</p>
-          <WaitlistForm id="hero" compact/>
+          <WaitlistForm id="hero" compact hideSubmit/>
         </div>
       </div>
     </section>
@@ -151,7 +151,7 @@ function Landing() {
     <section className="remie-bottom-waitlist" aria-labelledby="bottom-waitlist-title">
       <h2 id="bottom-waitlist-title">Join the Remie waitlist.</h2>
       <p>Be among the first to bring your closest people and favorite recipes around one table.</p>
-      <WaitlistForm id="bottom" hideLabel buttonLabel="Enter" />
+      <WaitlistForm id="bottom" hideLabel hideSubmit />
     </section>
 
     <footer className="home-footer remie-kept-footer"><Logo/><nav><a href="#about-remie">About</a><a href="mailto:remiekitchen@gmail.com">Contact</a></nav></footer>

@@ -241,13 +241,29 @@
 @media(max-width:900px){.remie-feature{min-height:0}}
 @media(max-width:620px){.remie-product{padding:58px 14px}.remie-product-heading h2{font-size:36px}.remie-minimal .remie-hero-copy h1{font-size:38px}.remie-feature{gap:24px;padding:26px 18px}.remie-feature-copy h3{font-size:31px}.product-phone{width:min(260px,100%);height:455px;border-width:5px;border-radius:24px}.remie-minimal .remie-about h2{font-size:38px}}
 
+/* Full-bleed feature color bands */
+.remie-product{padding:clamp(64px,7vw,92px) 0 0}
+.remie-product-heading{padding:0 24px}
+.remie-feature-list{width:100%;max-width:none;gap:0}
+.remie-feature{min-height:610px;padding:clamp(42px,5vw,64px) max(24px,calc((100vw - 1024px)/2));border:0;border-radius:0;box-shadow:none}
+.remie-minimal .remie-about article{border:0;border-radius:0;background:transparent}
+@media(max-width:620px){.remie-product{padding:58px 0 0}.remie-product-heading{padding:0 20px}.remie-feature{gap:24px;padding:44px 20px;border-radius:0}}
+
 /* Smaller, quieter display scale */
 .remie-wordmark>div span{font-size:clamp(56px,6.5vw,76px)}
-.remie-minimal .remie-hero-copy h1{font-size:clamp(34px,4.2vw,50px)}
+.remie-minimal .remie-hero-copy h1{max-width:none;font-size:clamp(34px,4.2vw,50px);white-space:nowrap}
 .remie-product-heading h2{font-size:clamp(32px,3.8vw,46px)}
 .remie-feature-copy h3{font-size:clamp(26px,2.8vw,36px)}
 .remie-minimal .remie-about h2{font-size:clamp(32px,3.8vw,46px)}
-@media(max-width:620px){.remie-wordmark>div span{font-size:56px}.remie-minimal .remie-hero-copy h1{font-size:34px}.remie-product-heading h2{font-size:32px}.remie-feature-copy h3{font-size:28px}.remie-minimal .remie-about h2{font-size:34px}}
+@media(max-width:620px){.remie-wordmark>div span{font-size:56px}.remie-minimal .remie-hero-copy h1{font-size:34px;white-space:normal}.remie-product-heading h2{font-size:32px}.remie-feature-copy h3{font-size:28px}.remie-minimal .remie-about h2{font-size:34px}}
+
+/* Give the primary waitlist action more presence */
+.remie-minimal .hero-waitlist{width:min(720px,100%);margin-top:32px}
+.remie-minimal .hero-waitlist>label{margin-bottom:10px;font-size:13px;letter-spacing:.13em}
+.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{padding:8px;border-radius:999px}
+.remie-minimal .hero-waitlist input{font-size:17px}
+.remie-minimal .hero-waitlist .home-button{padding:15px 23px;font-size:15px}
+@media(max-width:620px){.remie-minimal .hero-waitlist{margin-top:24px}.remie-minimal .hero-waitlist>label{font-size:12px}.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{border-radius:999px}.remie-minimal .hero-waitlist .home-button{font-size:14px}}
 
 .remie-bottom-waitlist{padding:clamp(60px,7vw,88px) 24px;text-align:center;background:#173d31;color:#f8f4ea}
 .remie-bottom-waitlist h2{margin:0;font:400 clamp(32px,3.8vw,46px)/.92 'Darumadrop One',sans-serif;letter-spacing:.005em}
@@ -255,6 +271,7 @@
 .remie-bottom-waitlist .waitlist-form{margin-top:26px}
 .remie-bottom-waitlist .waitlist-form>label{color:#f8f4ea}
 .remie-bottom-waitlist .waitlist-form>small{color:rgba(248,244,234,.8)}
+.remie-bottom-waitlist .waitlist-form select{padding-right:32px;margin-right:8px}
 .remie-minimal .remie-bottom-waitlist .home-button{background:#bd6545}
 .remie-minimal .remie-bottom-waitlist .home-button:hover{background:#a85438}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
