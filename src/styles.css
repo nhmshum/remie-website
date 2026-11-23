@@ -67,10 +67,8 @@
 .remie-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,16,20,.88) 0%,rgba(18,16,20,.56) 47%,rgba(18,16,20,.18) 76%),linear-gradient(0deg,rgba(18,16,20,.72) 0%,transparent 55%,rgba(18,16,20,.28) 100%)}
 .remie-hero-inner{position:relative;z-index:1;display:flex;min-height:100svh;max-width:1440px;margin:0 auto;padding:clamp(28px,4vw,58px) clamp(22px,5vw,76px) clamp(34px,5vw,66px);flex-direction:column}
 .remie-wordmark span{font:700 clamp(44px,5.2vw,76px)/.9 'DM Sans',sans-serif;letter-spacing:-.075em}
-.remie-wordmark p{margin:12px 0 0;font-size:clamp(18px,2vw,28px);letter-spacing:-.025em}
 .remie-hero-copy{width:min(700px,100%);margin-top:auto}
 .remie-kicker{margin:0 0 14px;color:#eadcad;font-size:11px;font-weight:800;letter-spacing:.19em}
-.remie-hero-copy h1{margin:0;font:600 clamp(50px,6.5vw,94px)/.92 'Fraunces',serif;letter-spacing:-.055em;text-wrap:balance}
 .remie-lede{max-width:620px;margin:22px 0 0;color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);line-height:1.55}
 .remie-minimal .hero-waitlist{width:min(640px,100%);margin-top:28px}
 .remie-minimal .hero-waitlist>label{margin-left:0;color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
@@ -95,11 +93,9 @@
   .remie-hero-image{object-position:62% center}
   .remie-hero-shade{background:linear-gradient(0deg,rgba(18,16,20,.9) 0%,rgba(18,16,20,.56) 57%,rgba(18,16,20,.24) 100%)}
   .remie-wordmark span{font-size:48px}
-  .remie-wordmark p{margin-top:8px;font-size:19px}
-  .remie-hero-copy h1{font-size:clamp(45px,13.5vw,62px)}
   .remie-lede{margin-top:17px;font-size:15px;line-height:1.5}
   .remie-minimal .hero-waitlist{margin-top:20px}
-  .remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{grid-template-columns:92px 1fr;border-radius:18px}
+  .remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{grid-template-columns:auto minmax(0,1fr);border-radius:18px}
   .remie-minimal .waitlist-form .home-button{border-radius:11px}
   .remie-about{padding:22px 14px 64px}
   .remie-about article{padding:30px 24px;border-radius:20px}
@@ -169,11 +165,9 @@
 .remie-wordmark>div{display:flex;align-items:center;gap:15px}
 .remie-wordmark img{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,.28))}
 .remie-wordmark>div span{font:700 clamp(52px,7vw,80px)/.9 'DM Sans',sans-serif;letter-spacing:-.075em}
-.remie-wordmark p{margin:12px 0 0;font-size:clamp(20px,2.5vw,31px)}
 .remie-kitchen-slide{overflow:hidden;margin-top:34px;border:1px solid rgba(222,196,113,.36);border-radius:28px;background:#f7f0df;box-shadow:0 25px 80px rgba(0,0,0,.28),0 0 40px rgba(122,87,218,.08)}
 .remie-kitchen-slide img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center;image-rendering:auto}
 .remie-minimal .remie-hero-copy{width:100%;margin:28px 0 0}
-.remie-minimal .remie-hero-copy h1{max-width:870px;font-size:clamp(42px,6vw,70px);line-height:.98}
 .remie-minimal .remie-lede{max-width:760px}
 .remie-minimal .remie-about{padding-top:18px}
 .remie-minimal .remie-kept-footer{max-width:none;background:#f8f4ea;color:#253b31}
@@ -188,10 +182,8 @@
   .remie-wordmark>div{gap:10px}
   .remie-wordmark img{width:52px;height:52px}
   .remie-wordmark>div span{font-size:52px}
-  .remie-wordmark p{font-size:20px}
   .remie-kitchen-slide{margin-top:24px;border-radius:20px}
   .remie-kitchen-slide img{aspect-ratio:4/3;object-fit:cover}
-  .remie-minimal .remie-hero-copy h1{font-size:44px}
   .remie-kept-footer{height:auto;min-height:108px;padding:22px;flex-wrap:wrap;gap:12px}
   .remie-kept-footer>span{display:none}
   .remie-kept-footer nav{margin-left:auto}
@@ -210,7 +202,6 @@
 
 /* Final one-pager screenshot treatment */
 .remie-minimal,.remie-minimal .remie-hero{background:#f8f4ea;color:#173d31}
-.remie-minimal .remie-wordmark p,.remie-minimal .remie-hero-copy h1{color:#173d31}
 .remie-minimal .remie-lede{color:#5f6e65}
 .remie-minimal .remie-kicker{color:#a85438}
 .remie-minimal .hero-waitlist>label,.remie-minimal .hero-waitlist>small{color:#516259}
@@ -223,15 +214,20 @@
 @media(max-width:620px){.product-phone{width:100%;border-width:6px;border-radius:27px}}
 
 /* Daruma display typography */
-.remie-minimal .remie-hero-copy h1,.remie-product-heading h2,.remie-feature-copy h3,.remie-minimal .remie-about h2{font-family:'Darumadrop One',sans-serif;font-weight:400;letter-spacing:.005em}
-.remie-minimal .remie-hero-copy h1{line-height:.88}
+.remie-wordmark h1,
+.remie-product-heading h2,
+.remie-feature-copy h3,
+.remie-minimal .remie-about h2{
+  font-family:'Darumadrop One',sans-serif;
+  font-weight:400;
+  letter-spacing:.005em;
+}
 .remie-product-heading h2,.remie-feature-copy h3,.remie-minimal .remie-about h2{line-height:.92}
 
 /* Compact marketing rhythm */
 .remie-product{padding:clamp(64px,7vw,92px) 24px}
 .remie-product-heading{margin-bottom:clamp(38px,5vw,56px)}
 .remie-product-heading h2{font-size:clamp(36px,4.5vw,54px)}
-.remie-minimal .remie-hero-copy h1{font-size:clamp(38px,5vw,58px)}
 .remie-feature-list{gap:18px}
 .remie-feature{min-height:610px;padding:clamp(30px,4vw,48px);gap:clamp(30px,5vw,64px)}
 .remie-feature-copy h3{font-size:clamp(30px,3.4vw,44px)}
@@ -239,7 +235,7 @@
 .product-phone img{height:100%;object-fit:cover;object-position:top}
 .remie-minimal .remie-about h2{font-size:clamp(36px,4.5vw,54px)}
 @media(max-width:900px){.remie-feature{min-height:0}}
-@media(max-width:620px){.remie-product{padding:58px 14px}.remie-product-heading h2{font-size:36px}.remie-minimal .remie-hero-copy h1{font-size:38px}.remie-feature{gap:24px;padding:26px 18px}.remie-feature-copy h3{font-size:31px}.product-phone{width:min(260px,100%);height:455px;border-width:5px;border-radius:24px}.remie-minimal .remie-about h2{font-size:38px}}
+@media(max-width:620px){.remie-product{padding:58px 14px}.remie-product-heading h2{font-size:36px}.remie-feature{gap:24px;padding:26px 18px}.remie-feature-copy h3{font-size:31px}.product-phone{width:min(260px,100%);height:455px;border-width:5px;border-radius:24px}.remie-minimal .remie-about h2{font-size:38px}}
 
 /* Full-bleed feature color bands */
 .remie-product{padding:clamp(64px,7vw,92px) 0 0}
@@ -251,11 +247,10 @@
 
 /* Smaller, quieter display scale */
 .remie-wordmark>div span{font-size:clamp(56px,6.5vw,76px)}
-.remie-minimal .remie-hero-copy h1{max-width:none;font-size:clamp(34px,4.2vw,50px);white-space:nowrap}
 .remie-product-heading h2{font-size:clamp(32px,3.8vw,46px)}
 .remie-feature-copy h3{font-size:clamp(26px,2.8vw,36px)}
 .remie-minimal .remie-about h2{font-size:clamp(32px,3.8vw,46px)}
-@media(max-width:620px){.remie-wordmark>div span{font-size:56px}.remie-minimal .remie-hero-copy h1{font-size:34px;white-space:normal}.remie-product-heading h2{font-size:32px}.remie-feature-copy h3{font-size:28px}.remie-minimal .remie-about h2{font-size:34px}}
+@media(max-width:620px){.remie-wordmark>div span{font-size:56px}.remie-product-heading h2{font-size:32px}.remie-feature-copy h3{font-size:28px}.remie-minimal .remie-about h2{font-size:34px}}
 
 /* Give the primary waitlist action more presence */
 .remie-minimal .hero-waitlist{width:min(720px,100%);margin-top:32px}
@@ -265,7 +260,7 @@
 .remie-minimal .hero-waitlist .home-button{padding:15px 23px;font-size:15px}
 @media(max-width:620px){.remie-minimal .hero-waitlist{margin-top:24px}.remie-minimal .hero-waitlist>label{font-size:12px}.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{border-radius:999px}.remie-minimal .hero-waitlist .home-button{font-size:14px}}
 
-.remie-bottom-waitlist{padding:clamp(60px,7vw,88px) 24px;text-align:center;background:#173d31;color:#f8f4ea}
+.remie-bottom-waitlist{padding:clamp(60px,7vw,88px) 24px;text-align:center;background:var(--remie-forest);color:var(--remie-cream)}
 .remie-bottom-waitlist h2{margin:0;font:400 clamp(32px,3.8vw,46px)/.92 'Darumadrop One',sans-serif;letter-spacing:.005em}
 .remie-bottom-waitlist>p:not(.remie-kicker){margin:16px auto 0;color:rgba(248,244,234,.76);font-size:16px;line-height:1.6;white-space:nowrap}
 .remie-bottom-waitlist .waitlist-form{margin-top:26px}
@@ -277,19 +272,34 @@
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:620px){.remie-bottom-waitlist{padding:54px 14px}.remie-bottom-waitlist h2{font-size:32px}.remie-bottom-waitlist>p:not(.remie-kicker){font-size:15px;white-space:normal}}
 
-/* Image-led hero and roomier final type scale */
-.remie-minimal .remie-hero{min-height:clamp(760px,92svh,920px);background:#173d31}
-.remie-minimal .remie-hero-inner{position:relative;width:100%;max-width:none;min-height:clamp(760px,92svh,920px);padding:clamp(38px,5vw,64px) max(28px,calc((100vw - 1180px)/2));overflow:hidden}
-.remie-minimal .remie-hero-inner::after{position:absolute;z-index:1;inset:0;content:"";pointer-events:none;background:linear-gradient(180deg,rgba(248,244,234,.94) 0%,rgba(248,244,234,.42) 22%,rgba(23,61,49,.06) 46%,rgba(23,61,49,.9) 100%)}
-.remie-minimal .remie-kitchen-slide{position:absolute;z-index:0;inset:0;margin:0;border:0;border-radius:0;box-shadow:none}
-.remie-minimal .remie-kitchen-slide img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center 48%}
-.remie-minimal .remie-wordmark{position:relative;z-index:2}
-.remie-minimal .remie-wordmark p{font-size:clamp(22px,2.35vw,34px)}
-.remie-minimal .remie-hero-copy{position:absolute;z-index:2;right:max(28px,calc((100vw - 1180px)/2));bottom:clamp(40px,6vw,68px);left:max(28px,calc((100vw - 1180px)/2));width:auto;margin:0}
-.remie-minimal .remie-hero-copy h1{max-width:none;color:#f8f4ea;font-size:clamp(44px,5vw,62px);line-height:.9;text-shadow:0 3px 24px rgba(16,40,31,.24)}
-.remie-minimal .remie-lede{max-width:810px;margin-top:19px;color:rgba(248,244,234,.9);font-size:clamp(18px,1.55vw,21px);line-height:1.55}
-.remie-minimal .hero-waitlist>label,.remie-minimal .hero-waitlist>small{color:#f8f4ea}
-.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{border-color:rgba(248,244,234,.55);background:rgba(255,253,248,.96);box-shadow:0 18px 45px rgba(12,39,31,.3)}
+/* Split landing hero */
+.remie-minimal .remie-hero-inner{
+  display:grid;
+  width:min(1320px,100%);
+  min-height:0;
+  padding:clamp(56px,7vw,100px) clamp(24px,4vw,54px) clamp(22px,2.5vw,36px);
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  align-items:center;
+  gap:clamp(28px,4vw,64px);
+}
+.remie-minimal .remie-hero-copy{margin:0}
+.remie-wordmark img{width:clamp(48px,5vw,64px);height:auto;filter:none}
+.remie-wordmark>div span{font-size:clamp(50px,5vw,68px)}
+.remie-wordmark h1{margin:12px 0 0;font-size:clamp(16px,1.55vw,19px);line-height:1.4}
+.remie-minimal .remie-lede{max-width:46ch;margin-top:20px;font-size:clamp(17px,1.4vw,20px);line-height:1.6}
+.remie-minimal .hero-waitlist{width:min(440px,100%);margin:26px 0 0}
+.remie-minimal .hero-waitlist:not(.waitlist-preferences)>div{
+  border-color:rgba(23,61,49,.16);
+  background:var(--remie-paper);
+  box-shadow:0 12px 30px rgba(23,61,49,.09);
+}
+.remie-minimal .remie-kitchen-slide{margin:0;border-radius:clamp(20px,2.8vw,34px);box-shadow:0 20px 55px rgba(23,61,49,.12)}
+.remie-minimal .remie-kitchen-slide img{width:100%;height:auto;aspect-ratio:auto}
+@media(max-width:760px){
+  .remie-minimal .remie-hero-inner{padding:clamp(36px,8vw,56px) clamp(20px,5vw,36px) clamp(20px,4vw,32px);grid-template-columns:minmax(0,1fr)}
+}
+
+/* Product type scale */
 .remie-product-heading h2{font-size:clamp(36px,4.1vw,50px)}
 .remie-product-heading>p:last-child{font-size:19px}
 .remie-feature-copy h3{font-size:clamp(30px,3.2vw,42px)}
@@ -297,40 +307,28 @@
 .remie-minimal .remie-about h2{font-size:clamp(36px,4.2vw,50px)}
 .remie-about article>p:last-child{font-size:clamp(18px,1.65vw,22px)}
 @media(max-width:620px){
-  .remie-minimal .remie-hero,.remie-minimal .remie-hero-inner{min-height:780px}
-  .remie-minimal .remie-hero-inner{padding:24px 20px}
-  .remie-minimal .remie-hero-inner::after{background:linear-gradient(180deg,rgba(248,244,234,.95) 0%,rgba(248,244,234,.34) 25%,rgba(23,61,49,.12) 44%,rgba(23,61,49,.94) 100%)}
-  .remie-minimal .remie-kitchen-slide img{object-position:54% center}
-  .remie-minimal .remie-wordmark p{max-width:320px;font-size:20px;line-height:1.2}
-  .remie-minimal .remie-hero-copy{right:20px;bottom:28px;left:20px}
-  .remie-minimal .remie-hero-copy h1{font-size:38px;line-height:.92}
-  .remie-minimal .remie-lede{font-size:16px;line-height:1.48}
   .remie-product-heading>p:last-child{font-size:17px}
   .remie-feature-copy h3{font-size:31px}
   .remie-feature-copy p{font-size:16px}
 }
 
 /* Cinematic motion inspired by editorial story sites */
-@keyframes heroKitchenDrift{from{transform:scale(1.035) translate3d(0,-.5%,0)}to{transform:scale(1.075) translate3d(0,.5%,0)}}
-@keyframes heroWordIn{from{opacity:0;transform:translateY(26px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes heroKitchenDrift{from{transform:scale(1)}to{transform:scale(1.035)}}
 @keyframes heroElementIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes sectionCopyIn{from{opacity:.08;translate:0 52px;filter:blur(5px)}to{opacity:1;translate:0 0;filter:blur(0)}}
 @keyframes sectionVisualIn{from{opacity:.15;translate:0 70px;filter:blur(6px)}to{opacity:1;translate:0 0;filter:blur(0)}}
 .remie-minimal .remie-kitchen-slide img{animation:heroKitchenDrift 16s ease-in-out infinite alternate;will-change:transform}
 .remie-minimal .remie-wordmark{animation:heroElementIn .8s .08s cubic-bezier(.2,.75,.2,1) both}
-.hero-word-reveal{display:flex;gap:.2em;align-items:baseline;white-space:nowrap}
-.hero-word-reveal>span{display:inline-block;animation:heroWordIn .72s cubic-bezier(.18,.82,.2,1) both;animation-delay:calc(.28s + var(--word-index)*.055s)}
-.remie-minimal .remie-lede{animation:heroElementIn .75s .72s cubic-bezier(.2,.75,.2,1) both}
-.remie-minimal .hero-waitlist{animation:heroElementIn .75s .88s cubic-bezier(.2,.75,.2,1) both}
+.remie-minimal .remie-lede{animation:heroElementIn .75s .2s cubic-bezier(.2,.75,.2,1) both}
+.remie-minimal .hero-waitlist{animation:heroElementIn .75s .32s cubic-bezier(.2,.75,.2,1) both}
 .product-phone{transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s ease}
 .remie-feature:hover .product-phone{transform:rotate(0deg) translateY(-8px);box-shadow:0 34px 75px rgba(47,55,43,.24)}
 @supports (animation-timeline:view()){
-  .remie-product-heading,.remie-feature-copy,.remie-about article{animation:sectionCopyIn linear both;animation-timeline:view();animation-range:entry 5% cover 32%}
+  .remie-feature-copy,.remie-about article{animation:sectionCopyIn linear both;animation-timeline:view();animation-range:entry 5% cover 32%}
   .product-phone{animation:sectionVisualIn linear both;animation-timeline:view();animation-range:entry 2% cover 34%}
 }
-@media(max-width:620px){.hero-word-reveal{gap:.18em;flex-wrap:wrap;white-space:normal}.hero-word-reveal>span{animation-delay:calc(.2s + var(--word-index)*.045s)}}
 @media(prefers-reduced-motion:reduce){
-  .remie-minimal .remie-kitchen-slide img,.remie-minimal .remie-wordmark,.hero-word-reveal>span,.remie-minimal .remie-lede,.remie-minimal .hero-waitlist,.remie-product-heading,.remie-feature-copy,.product-phone,.remie-about article{animation:none!important;transition:none!important;transform:none!important;translate:none!important;filter:none!important;opacity:1!important}
+  .remie-minimal .remie-kitchen-slide img,.remie-minimal .remie-wordmark,.remie-minimal .remie-lede,.remie-minimal .hero-waitlist,.remie-feature-copy,.product-phone,.remie-about article{animation:none!important;transition:none!important;transform:none!important;translate:none!important;filter:none!important;opacity:1!important}
 }
 
 /* Give the country chevron breathing room before the divider */
@@ -338,36 +336,11 @@
 .remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:16px;padding-left:28px;border-left:1px solid #d8d0c6}
 @media(max-width:620px){.remie-minimal .waitlist-form:not(.waitlist-preferences)>div>input{margin-left:10px;padding-left:22px}}
 
-/* Quiet, legible masthead above the cinematic kitchen */
-.remie-minimal .remie-hero-inner{padding-top:34px}
-.remie-minimal .remie-hero-inner::before{position:absolute;z-index:1;top:0;right:0;left:0;height:150px;content:"";background:#f8f4ea;box-shadow:0 1px 0 rgba(23,61,49,.08)}
-.remie-minimal .remie-wordmark{display:flex;min-height:82px;align-items:center;justify-content:space-between;gap:40px}
-.remie-minimal .remie-wordmark p{max-width:520px;margin:0;text-align:right;font-size:clamp(19px,1.8vw,25px);line-height:1.25}
-@media(max-width:620px){
-  .remie-minimal .remie-hero-inner{padding-top:22px}
-  .remie-minimal .remie-hero-inner::before{height:154px}
-  .remie-minimal .remie-wordmark{display:block;min-height:112px}
-  .remie-minimal .remie-wordmark p{max-width:320px;margin-top:8px;text-align:left;font-size:18px}
-}
-
-/* Integrate the masthead with the kitchen instead of blocking it */
-.remie-minimal .remie-hero-inner{padding-top:26px}
-.remie-minimal .remie-hero-inner::before{top:16px;right:max(18px,calc((100vw - 1220px)/2));left:max(18px,calc((100vw - 1220px)/2));height:100px;border:1px solid rgba(248,244,234,.18);border-radius:26px;background:rgba(23,61,49,.82);box-shadow:0 14px 40px rgba(12,38,29,.18);backdrop-filter:blur(12px)}
-.remie-minimal .remie-hero-inner::after{background:linear-gradient(180deg,rgba(23,61,49,.06) 0%,rgba(23,61,49,.03) 26%,rgba(23,61,49,.08) 48%,rgba(23,61,49,.9) 100%)}
-.remie-minimal .remie-wordmark{min-height:80px}
-.remie-minimal .remie-wordmark img{width:62px;height:62px;padding:7px;border-radius:16px;background:rgba(248,244,234,.96);filter:none;box-shadow:0 7px 22px rgba(8,28,21,.22)}
-.remie-minimal .remie-wordmark>div span,.remie-minimal .remie-wordmark p{color:#f8f4ea;text-shadow:0 2px 18px rgba(7,27,20,.25)}
-@media(max-width:620px){
-  .remie-minimal .remie-hero-inner{padding-top:18px}
-  .remie-minimal .remie-hero-inner::before{top:10px;right:10px;left:10px;height:132px;border-radius:20px}
-  .remie-minimal .remie-wordmark img{width:52px;height:52px;padding:6px;border-radius:14px}
-}
-
 /* Mode-inspired editorial cookbook composition */
 .remie-product{padding:0;background:#f8f4ea}
-.remie-product-heading{display:flex;width:100%;max-width:none;min-height:72svh;margin:0;padding:clamp(90px,12vw,170px) 24px;align-items:center;justify-content:center;flex-direction:column;background-color:#f8f4ea;background-image:linear-gradient(rgba(23,61,49,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(23,61,49,.055) 1px,transparent 1px);background-size:72px 72px}
+.remie-product-heading{display:flex;width:100%;max-width:none;margin:0;padding:clamp(32px,4vw,56px) 24px;align-items:center;justify-content:center;flex-direction:column;background-color:#f8f4ea;background-image:linear-gradient(rgba(23,61,49,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(23,61,49,.055) 1px,transparent 1px);background-size:72px 72px}
 .remie-product-heading .remie-kicker{margin-bottom:22px}
-.remie-product-heading h2{max-width:1040px;font-family:'Fraunces',serif;font-size:clamp(58px,8vw,108px);font-weight:600;line-height:.9;letter-spacing:-.055em}
+.remie-product-heading h2{max-width:1040px;font-size:clamp(46px,6vw,80px);line-height:1}
 .remie-product-heading>p:last-child{max-width:620px;margin-top:30px;font-size:20px}
 .remie-feature-list{display:block}
 .remie-feature{position:sticky;top:0;min-height:100svh;padding:clamp(64px,8vw,110px) max(30px,calc((100vw - 1120px)/2));border-top:1px solid rgba(23,61,49,.14);background-size:72px 72px;box-shadow:0 -18px 48px rgba(35,45,36,.08)}
@@ -378,25 +351,22 @@
 .remie-feature-library{background-color:#f1e4d2;background-image:linear-gradient(rgba(79,54,36,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(79,54,36,.05) 1px,transparent 1px)}
 .remie-feature-guide{background-color:#244f3f;background-image:linear-gradient(rgba(248,244,234,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(248,244,234,.055) 1px,transparent 1px)}
 .remie-feature-copy>span{display:inline-flex;width:max-content;margin-bottom:24px;padding:8px 13px;border:1px solid currentColor;border-radius:999px;font-size:11px;letter-spacing:.14em}
-.remie-feature-copy h3{max-width:560px;font-family:'Fraunces',serif;font-size:clamp(50px,5vw,76px);font-weight:600;line-height:.94;letter-spacing:-.05em}
+.remie-feature-copy h3{max-width:560px;font-size:clamp(44px,4.5vw,66px);line-height:1}
 .remie-feature-copy p{max-width:520px;margin-top:24px;font-size:19px;line-height:1.65}
 .product-phone{width:min(330px,100%);height:610px;border-width:7px;border-radius:32px;box-shadow:0 35px 80px rgba(38,47,37,.22)}
 .remie-about{display:grid;min-height:78svh;padding:clamp(80px,10vw,150px) max(28px,calc((100vw - 1180px)/2));align-items:center;background-color:#eee6d6!important;background-image:linear-gradient(rgba(23,61,49,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,61,49,.06) 1px,transparent 1px);background-size:72px 72px}
 .remie-minimal .remie-about article{display:grid;width:100%;max-width:none;padding:0;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);align-items:end;gap:clamp(50px,8vw,120px)}
-.remie-minimal .remie-about h2{max-width:700px;margin:0;font-family:'Fraunces',serif;font-size:clamp(56px,6.5vw,92px);font-weight:600;line-height:.92;letter-spacing:-.055em}
+.remie-minimal .remie-about h2{max-width:700px;margin:0;font-size:clamp(48px,5.8vw,80px);line-height:1}
 .remie-about article>p:last-child{max-width:560px;font-size:20px;line-height:1.7}
-.remie-bottom-waitlist{background:#e9c87d;color:#173d31}
-.remie-bottom-waitlist>p:not(.remie-kicker),.remie-bottom-waitlist .waitlist-form>label,.remie-bottom-waitlist .waitlist-form>small{color:rgba(23,61,49,.72)}
 .remie-kept-footer{border-top:1px solid rgba(23,61,49,.1)}
 @media(max-width:900px){
-  .remie-product-heading{min-height:600px}
   .remie-feature{position:relative;top:auto;min-height:0;padding:70px 28px;box-shadow:none}
   .remie-minimal .remie-about article{grid-template-columns:1fr;align-items:start}
   .remie-about article>p:last-child{max-width:760px}
 }
 @media(max-width:620px){
-  .remie-product-heading{min-height:520px;padding:90px 20px;text-align:left;align-items:flex-start}
-  .remie-product-heading h2{font-size:56px}
+  .remie-product-heading{padding-inline:20px;text-align:left;align-items:flex-start}
+  .remie-product-heading h2{font-size:44px}
   .remie-product-heading>p:last-child{font-size:17px}
   .remie-feature{padding:58px 20px;background-size:42px 42px}
   .remie-feature-copy h3{font-size:44px}
@@ -406,4 +376,55 @@
   .remie-minimal .remie-about article{gap:38px}
   .remie-minimal .remie-about h2{font-size:52px}
   .remie-about article>p:last-child{font-size:18px}
+}
+
+/* Latest Remie direction: split hero, Daruma subtitles, forest close. */
+.remie-minimal .remie-hero{
+  min-height:min(900px,100svh);
+  background:var(--remie-cream);
+}
+.remie-minimal .remie-hero-inner{
+  min-height:min(900px,100svh);
+  padding-block:clamp(42px,6vw,78px);
+}
+.remie-wordmark h1{
+  max-width:10ch;
+  margin-top:clamp(20px,3vw,34px);
+  color:var(--remie-forest);
+  font-size:clamp(40px,5vw,68px);
+  line-height:.96;
+  text-wrap:balance;
+}
+.remie-minimal .remie-lede{max-width:42ch}
+.remie-minimal .remie-kitchen-slide{
+  align-self:stretch;
+  min-height:clamp(480px,68svh,720px);
+}
+.remie-minimal .remie-kitchen-slide img{
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.remie-kicker,
+.remie-feature-copy>span{
+  font-family:'Darumadrop One',sans-serif;
+  font-size:clamp(15px,1.35vw,19px);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:.055em;
+}
+.remie-product-heading>p:last-child,
+.remie-bottom-waitlist>p:not(.remie-kicker){
+  font-family:'Darumadrop One',sans-serif;
+  font-size:clamp(19px,1.8vw,25px);
+  line-height:1.25;
+}
+.remie-bottom-waitlist{background:var(--remie-forest);color:var(--remie-cream)}
+
+@media(max-width:760px){
+  .remie-minimal .remie-hero,
+  .remie-minimal .remie-hero-inner{min-height:0}
+  .remie-wordmark h1{max-width:12ch;font-size:clamp(38px,12vw,56px)}
+  .remie-minimal .remie-kitchen-slide{min-height:0;margin-top:8px}
+  .remie-minimal .remie-kitchen-slide img{height:auto;aspect-ratio:4/3}
 }
