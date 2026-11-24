@@ -92,9 +92,10 @@ function Landing() {
         <div className="remie-hero-copy">
           <header className="remie-wordmark">
             <div><img src="/assets/remie-chef-logo.png" alt=""/><span>remie</span></div>
-            <h1>A collaborative cookbook for your inner circle.</h1>
+            <p className="remie-kicker">A COLLABORATIVE COOKBOOK</p>
+            <h1>For the meals we remember.</h1>
           </header>
-          <p className="remie-lede">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</p>
+          <p className="remie-lede">Remie turns everyday cooking into something shared, remembered, and easier to come back to.</p>
           <WaitlistForm id="hero" compact hideSubmit/>
         </div>
         <div className="remie-kitchen-slide">
@@ -105,9 +106,7 @@ function Landing() {
 
     <section className="remie-product" id="features" aria-labelledby="product-features-title">
       <header className="remie-product-heading">
-        <p className="remie-kicker">A COLLABORATIVE COOKBOOK</p>
-        <h2 id="product-features-title">For the meals we remember.</h2>
-        <p>Remie turns everyday cooking into something shared, remembered, and easier to come back to.</p>
+        <h2 id="product-features-title">A cozy and intimate kitchen space to share what you’re making with your closest bubble, pass down recipes from your family, and connect over food as our universal love language.</h2>
       </header>
 
       <div className="remie-feature-list">
