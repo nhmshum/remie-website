@@ -428,3 +428,33 @@
   .remie-minimal .remie-kitchen-slide{min-height:0;margin-top:8px}
   .remie-minimal .remie-kitchen-slide img{height:auto;aspect-ratio:4/3}
 }
+
+/* Keep the feature story compact: enough room to read, without a full viewport per idea. */
+.remie-product-heading{padding-block:clamp(28px,3.5vw,44px)}
+.remie-feature{
+  min-height:clamp(540px,70svh,680px);
+  padding-top:clamp(38px,5vh,56px);
+  padding-bottom:clamp(38px,5vh,56px);
+}
+.remie-feature-copy>span{margin-bottom:18px}
+.remie-feature-copy h3{font-size:clamp(38px,3.8vw,54px)}
+.remie-feature-copy p{margin-top:18px;font-size:17px;line-height:1.55}
+.product-phone{
+  width:min(260px,100%);
+  height:470px;
+  border-width:6px;
+  border-radius:28px;
+}
+
+@media(max-width:900px){
+  .remie-feature{padding-top:48px;padding-bottom:48px}
+  .product-phone{height:460px}
+}
+
+@media(max-width:620px){
+  .remie-product-heading{padding-block:30px}
+  .remie-feature{padding-top:40px;padding-bottom:40px}
+  .remie-feature-copy h3{font-size:38px}
+  .remie-feature-copy p{font-size:16px}
+  .product-phone{width:min(245px,100%);height:430px}
+}
